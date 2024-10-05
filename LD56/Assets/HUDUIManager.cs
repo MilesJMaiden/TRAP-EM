@@ -82,6 +82,13 @@ public class HUDUIManager : MonoBehaviour
             cooldownSlider.value = 0;
         }
     }
+    private void HandleDashUsed()
+    {
+        if (cooldownSlider != null)
+        {
+            cooldownSlider.value = 0;
+        }
+    }
     public void EnableHUD()
     {
         gameObject.SetActive(true);

@@ -143,6 +143,17 @@ public class FirstPersonPlayerController : MonoBehaviour
             Debug.LogError("GrappleLineObject is not assigned!");
         }
 
+        // Initialize the dash cooldown slider
+        if (dashCooldownSlider != null)
+        {
+            dashCooldownSlider.maxValue = dashCooldown;
+            dashCooldownSlider.value = dashCooldown;
+        }
+        else
+        {
+            Debug.LogError("dashCooldownSlider is not assigned!");
+        }
+
         // Initialize the grapple cooldown slider
         if (grappleCooldownSlider != null)
         {
@@ -238,10 +249,10 @@ public class FirstPersonPlayerController : MonoBehaviour
         // If the player is not dashing, check if the dash cooldown has expired
         if (!_canDash)
         {
-            _dashTime -= Time.deltaTime;
+            _dashCooldownTime -= Time.deltaTime;
             if (dashCooldownSlider != null)
             {
-                dashCooldownSlider.value = _dashCooldownTime;
+                dashCooldownSlider.value = dashCooldown - _dashCooldownTime;
             }
 
             if (_dashCooldownTime <= 0)
@@ -259,7 +270,13 @@ public class FirstPersonPlayerController : MonoBehaviour
             _isDashing = true;
             _dashTime = dashDuration;
             _canDash = false;
-            _dashCooldownTime = dashCooldown; 
+            _dashCooldownTime = dashCooldown;
+            OnDashUsed?.Invoke(); // Trigger the event
+
+            if (dashCooldownSlider != null)
+            {
+                dashCooldownSlider.value = 0;
+            }
         }
         
         if (_isDashing)
@@ -272,12 +289,7 @@ public class FirstPersonPlayerController : MonoBehaviour
             else
             {
                 _isDashing = false;
-                OnDashUsed?.Invoke(); // Trigger the event
-
-                if (grappleCooldownSlider != null)
-                {
-                    grappleCooldownSlider.value = 0;
-                }
+                
 
             }
         }

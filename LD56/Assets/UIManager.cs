@@ -67,12 +67,12 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f; // Pause the game
 
         // Set the paused state in the player controller
-        /*
+        
         if (playerController != null)
         {
             playerController.SetPaused(true);
         }
-        */
+        
         // Disable HUD updates
         if (hudUIManager != null)
         {
