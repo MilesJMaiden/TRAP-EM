@@ -198,8 +198,9 @@ public class FirstPersonPlayerController : MonoBehaviour
 
         // Movement based on camera's forward and right vectors
         move = m_CameraTransform.forward * move.z + m_CameraTransform.right * move.x;
-
+        _currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : playerSpeed;
         m_CharacterController.Move(move * (Time.deltaTime * _currentSpeed));
+
         HandleDashing(move);
         // Update the camera position to follow the player
         if (CameraSource != null)
@@ -368,6 +369,11 @@ public class FirstPersonPlayerController : MonoBehaviour
                     m_PlayerVelocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
                     m_LineRenderer.enabled = false;
                 }
+                else
+                {
+                    // Disable gravity while grappling
+                    m_PlayerVelocity.y = 0;
+                }
             }
         }
 
@@ -376,7 +382,7 @@ public class FirstPersonPlayerController : MonoBehaviour
             _grappleCooldownTime -= Time.deltaTime;
             if (grappleCooldownSlider != null)
             {
-                grappleCooldownSlider.value = _grappleCooldownTime;
+                grappleCooldownSlider.value = grappleCooldown - _grappleCooldownTime;
             }
 
             if (_grappleCooldownTime <= 0)
