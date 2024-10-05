@@ -198,7 +198,7 @@ MonoBehaviour:
   grappleDistance: 20
   grappleSpeed: 10
   grappleCooldown: 15
-  grappleLineObject: {fileID: 0}
+  grappleLineObject: {fileID: 8764844204193772677}
   grappleCooldownSlider: {fileID: 0}
 --- !u!1 &4561085446342473321
 GameObject:

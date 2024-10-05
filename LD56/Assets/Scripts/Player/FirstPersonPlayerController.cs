@@ -4,6 +4,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonPlayerController : MonoBehaviour
 {
+    public delegate void GrappleUsedHandler(); // Delegate for grapple hook usage
+    public static event GrappleUsedHandler OnGrappleUsed; // Event for grapple hook usage
+
     private CharacterController m_CharacterController;
     private Vector3 m_PlayerVelocity;
     private InputManager m_InputManager;
@@ -195,10 +198,12 @@ public class FirstPersonPlayerController : MonoBehaviour
                 _grappleCooldownTime = grappleCooldown;
                 m_LineRenderer.enabled = true; // Enable the line renderer
 
+                OnGrappleUsed?.Invoke(); // Trigger the event
+
                 // Start the grapple cooldown
                 if (grappleCooldownSlider != null)
                 {
-                    grappleCooldownSlider.value = grappleCooldown;
+                    grappleCooldownSlider.value = 0;
                 }
             }
         }

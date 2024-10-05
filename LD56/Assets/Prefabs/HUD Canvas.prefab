@@ -1013,6 +1013,7 @@ GameObject:
   - component: {fileID: 6314044286836199023}
   - component: {fileID: 8655491401695634038}
   - component: {fileID: 1899728014466355714}
+  - component: {fileID: 1718254608268958114}
   m_Layer: 5
   m_Name: HUD Canvas
   m_TagString: Untagged
@@ -1106,6 +1107,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1718254608268958114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654276663628851478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc84099b379ac634e967811e439bc57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 7343373531049644855}
+  scoreText: {fileID: 4237260446551483847}
+  cooldownSlider: {fileID: 8695174911789692484}
+  creaturesRemaining: 10
+  initialScore: 10000
 --- !u!1 &7775807252252671974
 GameObject:
   m_ObjectHideFlags: 0

@@ -2581,6 +2581,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1856761414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1028685602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8695174911789692484, guid: 5d632e0a15b20804593aec8e70fbdad6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3986135444873706695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1059716577
 GameObject:
   m_ObjectHideFlags: 0
@@ -5754,7 +5766,7 @@ PrefabInstance:
     - target: {fileID: 4998954702861238563, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4587
+      value: 4590
       objectReference: {fileID: 0}
     - target: {fileID: 6359525625073012498, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
@@ -5869,6 +5881,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: First Person Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
+        type: 3}
+      propertyPath: grappleCooldownSlider
+      value: 
+      objectReference: {fileID: 1028685602}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
