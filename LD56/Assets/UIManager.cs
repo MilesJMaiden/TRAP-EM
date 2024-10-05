@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject mainMenu;
-    [SerializeField]
     private GameObject pauseMenu;
     [SerializeField]
     private GameObject hudUI;
@@ -16,9 +14,24 @@ public class UIManager : MonoBehaviour
     private FirstPersonPlayerController playerController;
     private HUDUIManager hudUIManager;
 
+    public static UIManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Keeps the UIManager across scenes
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
-        ShowMainMenu();
+        pauseMenu.SetActive(false);
         // Find the player controller and HUD manager in the scene
         playerController = FindObjectOfType<FirstPersonPlayerController>();
         hudUIManager = FindObjectOfType<HUDUIManager>();
@@ -39,17 +52,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ShowMainMenu()
-    {
-        mainMenu.SetActive(true);
-        pauseMenu.SetActive(false);
-        hudUI.SetActive(false);
-        Time.timeScale = 0f; // Pause the game
-    }
-
     public void StartGame()
     {
-        mainMenu.SetActive(false);
         hudUI.SetActive(true);
         Time.timeScale = 1f; // Resume the game
     }
@@ -67,12 +71,11 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f; // Pause the game
 
         // Set the paused state in the player controller
-        
         if (playerController != null)
         {
             playerController.SetPaused(true);
         }
-        
+
         // Disable HUD updates
         if (hudUIManager != null)
         {
@@ -92,12 +95,11 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f; // Resume the game
 
         // Set the paused state in the player controller
-        
         if (playerController != null)
         {
             playerController.SetPaused(false);
         }
-        
+
         // Enable HUD updates
         if (hudUIManager != null)
         {
