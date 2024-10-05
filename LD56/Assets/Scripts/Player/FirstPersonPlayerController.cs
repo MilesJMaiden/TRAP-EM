@@ -67,11 +67,27 @@ public class FirstPersonPlayerController : MonoBehaviour
     [SerializeField]
     private Slider grappleCooldownSlider;
 
+    private bool isPaused = false; // Boolean to store whether the game is paused or not
+
+    private Vector3 originalCenter; // Original center of the CharacterController
+
+    [SerializeField]
+    private GameObject CameraSource;  // Reference to the camera or object to move
+
+    private Vector3 cameraOriginalPosition;  // To store the original position of the CameraSource
+
+    // New field for camera tracking position
+
+
 
     void Start()
     {
         m_CharacterController = GetComponent<CharacterController>();
         m_InputManager = InputManager.Instance;
+
+        // Store the original center of the CharacterController
+        originalCenter = m_CharacterController.center;
+
 
         // Get the LineRenderer from the referenced GameObject
         if (grappleLineObject != null)
@@ -82,8 +98,6 @@ public class FirstPersonPlayerController : MonoBehaviour
         {
             Debug.LogError("GrappleLineObject is not assigned in the Inspector.");
         }
-
-        if (Camera.main != null) m_CameraTransform = Camera.main.transform;
 
         // Lock the cursor
         Cursor.lockState = CursorLockMode.Locked;
@@ -108,10 +122,21 @@ public class FirstPersonPlayerController : MonoBehaviour
         {
             Debug.LogError("GrappleCooldownSlider is not assigned in the Inspector.");
         }
+
+        if (CameraSource != null)
+        {
+            cameraOriginalPosition = CameraSource.transform.localPosition;  // Store the original local position
+        }
+        else
+        {
+            Debug.LogError("CameraSource is not assigned in the Inspector.");
+        }
     }
 
     void Update()
     {
+        if (isPaused) return; // Do not update if the game is paused
+
         // Use CheckSphere for ground detection
         _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -124,30 +149,40 @@ public class FirstPersonPlayerController : MonoBehaviour
 
         Vector2 movement = m_InputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
-        move = m_CameraTransform.forward * move.z + m_CameraTransform.right * move.x;
 
-        // Handle sprinting and crouching only if grounded
-        if (_isGrounded) // Newly added condition
+        if (_isGrounded)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 _isCrouching = false;
-                m_CharacterController.height = 2.0f; // Reset height if previously crouched
-                _currentSpeed = sprintSpeed; // Newly added assignment
+                m_CharacterController.height = 2.0f;
+                m_CharacterController.center = originalCenter;
+                CameraSource.transform.localPosition = cameraOriginalPosition;  // Reset camera to original position
+
+                _currentSpeed = sprintSpeed;
             }
             else if (Input.GetKey(KeyCode.LeftControl))
             {
                 _isCrouching = true;
-                m_CharacterController.height = 1.0f; // Reduce height for crouching
-                _currentSpeed = crouchSpeed; // Newly added assignment
+                m_CharacterController.height = 1.0f;
+                m_CharacterController.center = new Vector3(originalCenter.x, -0.5f, originalCenter.z);
+                CameraSource.transform.localPosition = new Vector3(cameraOriginalPosition.x, cameraOriginalPosition.y - 0.75f, cameraOriginalPosition.z);  // Move camera down
+
+                _currentSpeed = crouchSpeed;
             }
             else
             {
-                _isCrouching = false;
-                m_CharacterController.height = 2.0f; // Reset height if previously crouched
-                _currentSpeed = playerSpeed; // Newly added assignment
+                if (_isCrouching && !Input.GetKey(KeyCode.LeftControl))
+                {
+                    _isCrouching = false;
+                    m_CharacterController.height = 2.0f;
+                    m_CharacterController.center = originalCenter;
+                    CameraSource.transform.localPosition = cameraOriginalPosition;  // Reset camera to original position
+                }
+                _currentSpeed = playerSpeed;
             }
         }
+
 
         // Handle dashing
         if (Input.GetKeyDown(KeyCode.E) && !_isGrounded && _canDash)
@@ -179,8 +214,9 @@ public class FirstPersonPlayerController : MonoBehaviour
         {
             m_PlayerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             _jumpCount++;
-            Debug.Log("Gravity value: " + gravityValue);
-            Debug.Log("m_playervelocity.y: " + m_PlayerVelocity.y);
+            Debug.Log("isCrouched" + _isCrouching);
+            Debug.Log("m_CharacterController.height: " + m_CharacterController.height);
+            Debug.Log("isGrounded: " + _isGrounded);
         }
 
         m_PlayerVelocity.y += gravityValue * Time.deltaTime;
@@ -261,6 +297,10 @@ public class FirstPersonPlayerController : MonoBehaviour
 
         m_PlayerVelocity.y += gravityValue * Time.deltaTime;
         m_CharacterController.Move(m_PlayerVelocity * Time.deltaTime);
+    }
+    public void SetPaused(bool paused)
+    {
+        isPaused = paused;
     }
 
     // To visualize the ground check in the editor
