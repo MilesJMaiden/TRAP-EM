@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonPlayerController : MonoBehaviour
@@ -407,6 +408,12 @@ public class FirstPersonPlayerController : MonoBehaviour
     {
         m_PlayerVelocity.y += gravityValue * Time.deltaTime;
         m_CharacterController.Move(m_PlayerVelocity * Time.deltaTime);
+
+        // Stop the force when the player lands
+        if (_isGrounded && m_PlayerVelocity.y < 0)
+        {
+            m_PlayerVelocity = Vector3.zero;
+        }
     }
 
     /// <summary>
@@ -433,6 +440,33 @@ public class FirstPersonPlayerController : MonoBehaviour
     public void SetPaused(bool paused)
     {
         isPaused = paused;
+    }
+    /// <summary>
+    /// Handles interaction with Landmines.
+    /// </summary>
+    /// <param name="force"></param>
+    public void ApplyExplosionForce(Vector3 force, float maxDistance)
+    {
+        m_PlayerVelocity += force;
+        StartCoroutine(StopForceAfterDistance(maxDistance));
+    }
+
+    /// <summary>
+    /// Coroutine to stop the force after a given distance.
+    /// </summary>
+    private IEnumerator StopForceAfterDistance(float maxDistance)
+    {
+        float distanceTraveled = 0f;
+        Vector3 previousPosition = transform.position;
+
+        while (distanceTraveled < maxDistance)
+        {
+            yield return null;
+            distanceTraveled += Vector3.Distance(previousPosition, transform.position);
+            previousPosition = transform.position;
+        }
+
+        m_PlayerVelocity = Vector3.zero;
     }
 
     #endregion
