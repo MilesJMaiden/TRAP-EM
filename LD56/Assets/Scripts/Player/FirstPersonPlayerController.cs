@@ -7,6 +7,7 @@ public class FirstPersonPlayerController : MonoBehaviour
     private Vector3 m_PlayerVelocity;
     private InputManager m_InputManager;
     private Transform m_CameraTransform;
+    private LineRenderer m_LineRenderer;
 
     [SerializeField]
     private float playerSpeed = 2.0f; // Speed of the player
@@ -44,19 +45,52 @@ public class FirstPersonPlayerController : MonoBehaviour
     private bool _isDashing = false; // Boolean to store whether the player is dashing or not
     private float _dashTime; // Time remaining for the dash
 
+    // Fields for Grapple Hook
+    [SerializeField]
+    private float grappleDistance = 20.0f; // Maximum distance for the grapple hook
+    [SerializeField]
+    private float grappleSpeed = 10.0f; // Speed of the grapple hook
+    [SerializeField]
+    private float grappleCooldown = 15.0f; // Cooldown time for the grapple hook
+    private bool _canGrapple = true; // Boolean to store whether the player can use the grapple hook
+    private bool _isGrappling = false; // Boolean to store whether the player is currently grappling
+    private Vector3 _grapplePoint; // Point to grapple to
+    private float _grappleCooldownTime; // Time remaining for the grapple cooldown
+
+    // Reference to the GameObject containing the LineRenderer
+    [SerializeField]
+    private GameObject grappleLineObject;
+
     void Start()
     {
         m_CharacterController = GetComponent<CharacterController>();
         m_InputManager = InputManager.Instance;
+
+        // Get the LineRenderer from the referenced GameObject
+        if (grappleLineObject != null)
+        {
+            m_LineRenderer = grappleLineObject.GetComponent<LineRenderer>();
+        }
+        else
+        {
+            Debug.LogError("GrappleLineObject is not assigned in the Inspector.");
+        }
+
         if (Camera.main != null) m_CameraTransform = Camera.main.transform;
 
         // Lock the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        // Initialize LineRenderer
+        if (m_LineRenderer != null)
+        {
+            m_LineRenderer.positionCount = 2;
+            m_LineRenderer.enabled = false;
+        }
+
         _currentSpeed = playerSpeed; // Set the current speed to the player speed
     }
-
 
     void Update()
     {
@@ -127,6 +161,67 @@ public class FirstPersonPlayerController : MonoBehaviour
         {
             m_PlayerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             _jumpCount++;
+            Debug.Log("Gravity value: " + gravityValue);
+            Debug.Log("m_playervelocity.y: " + m_PlayerVelocity.y);
+        }
+
+        m_PlayerVelocity.y += gravityValue * Time.deltaTime;
+        m_CharacterController.Move(m_PlayerVelocity * Time.deltaTime);
+
+        // Handle grapple hook
+        if (Input.GetMouseButtonDown(1) && _canGrapple)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(m_CameraTransform.position, m_CameraTransform.forward, out hit, grappleDistance, groundMask))
+            {
+                _isGrappling = true;
+                _grapplePoint = hit.point;
+                _canGrapple = false;
+                _grappleCooldownTime = grappleCooldown;
+                m_LineRenderer.enabled = true; // Enable the line renderer
+            }
+        }
+
+        if (_isGrappling)
+        {
+            // Check for jump input to break the grapple
+            if (m_InputManager.PlayerJumpedThisFrame())
+            {
+                _isGrappling = false;
+                m_LineRenderer.enabled = false; // Disable the line renderer
+            }
+            else
+            {
+                Vector3 direction = (_grapplePoint - transform.position).normalized;
+                m_CharacterController.Move(direction * (Time.deltaTime * grappleSpeed));
+
+                // Update the line renderer positions
+                m_LineRenderer.SetPosition(0, transform.position);
+                m_LineRenderer.SetPosition(1, _grapplePoint);
+
+                // Check if the player has reached the grapple point
+                if (Vector3.Distance(transform.position, _grapplePoint) < 1.0f)
+                {
+                    _isGrappling = false;
+                    m_PlayerVelocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityValue); // Small jump to prevent getting stuck
+                    m_LineRenderer.enabled = false; // Disable the line renderer
+                }
+                else
+                {
+                    // Disable gravity while grappling
+                    m_PlayerVelocity.y = 0;
+                }
+            }
+        }
+
+        // Handle grapple cooldown
+        if (!_canGrapple)
+        {
+            _grappleCooldownTime -= Time.deltaTime;
+            if (_grappleCooldownTime <= 0)
+            {
+                _canGrapple = true;
+            }
         }
 
         m_PlayerVelocity.y += gravityValue * Time.deltaTime;
