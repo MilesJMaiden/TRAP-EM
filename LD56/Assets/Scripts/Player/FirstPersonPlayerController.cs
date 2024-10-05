@@ -53,6 +53,12 @@ public class FirstPersonPlayerController : MonoBehaviour
     [Header("Camera Settings")]
     [SerializeField] private GameObject CameraSource;  // Reference to the camera or object to move
 
+    [Header("Detection Settings")]
+    [SerializeField] private SphereCollider detectionCollider; // Reference to the SphereCollider
+    [SerializeField] private float playerDetectionRadius = 3.0f; // Radius to detect objects
+    [SerializeField] private float sprintingDetectionRadius = 7.0f; // Radius to detect objects while sprinting
+    [SerializeField] private float crouchingDetectionRadius = 1.0f; // Radius to detect objects while crouching
+
     #endregion
 
     #region Private Fields
@@ -165,20 +171,16 @@ public class FirstPersonPlayerController : MonoBehaviour
         {
             Debug.LogError("GrappleCooldownSlider is not assigned!");
         }
+        // Check if the detectionCollider is assigned
+        if (detectionCollider == null)
+        {
+            Debug.LogError("detectionCollider is not assigned!");
+        }
 
 
 
         _currentSpeed = playerSpeed; // Set the default player speed
     }
-
-    #endregion
-
-    #region Player Rotation
-
-    /// <summary>
-    /// Rotates the player to face the same direction as the Cinemachine camera.
-    /// </summary>
-
 
     #endregion
 
@@ -198,9 +200,16 @@ public class FirstPersonPlayerController : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(cameraForward); // Rotate player to face camera direction
 
         // Movement based on camera's forward and right vectors
-        move = m_CameraTransform.forward * move.z + m_CameraTransform.right * move.x;
+        Vector3 cameraRight = m_CameraTransform.right;
+        cameraRight.y = 0f; // Zero out Y to keep the player upright
+        cameraRight.Normalize(); // Normalize to maintain direction magnitude
+
+        move = cameraForward * move.z + cameraRight * move.x;
+
         _currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : playerSpeed;
         m_CharacterController.Move(move * (Time.deltaTime * _currentSpeed));
+
+        UpdateDetectionRadius(); // Update the detection radius
 
         HandleDashing(move);
         // Update the camera position to follow the player
@@ -228,6 +237,8 @@ public class FirstPersonPlayerController : MonoBehaviour
                     // Move the CameraSource down by 0.75 units when crouching
                     CameraSource.transform.localPosition = new Vector3(cameraOriginalPosition.x, cameraOriginalPosition.y - 0.75f, cameraOriginalPosition.z);
                     _currentSpeed = crouchSpeed;
+
+                    UpdateDetectionRadius(); // Update the detection radius
                 }
             }
             else if (_isCrouching)
@@ -240,6 +251,8 @@ public class FirstPersonPlayerController : MonoBehaviour
                 // Reset the CameraSource back to its original position
                 CameraSource.transform.localPosition = cameraOriginalPosition;
                 _currentSpeed = playerSpeed;
+
+                UpdateDetectionRadius(); // Update the detection radius
             }
         }
     }
@@ -412,7 +425,7 @@ public class FirstPersonPlayerController : MonoBehaviour
         // Stop the force when the player lands
         if (_isGrounded && m_PlayerVelocity.y < 0)
         {
-            m_PlayerVelocity = Vector3.zero;
+           m_PlayerVelocity = Vector3.zero;
         }
     }
 
@@ -467,6 +480,25 @@ public class FirstPersonPlayerController : MonoBehaviour
         }
 
         m_PlayerVelocity = Vector3.zero;
+    }
+
+    /// <summary>
+    /// Updates the detection radius based on the player's current state.
+    /// </summary>
+    private void UpdateDetectionRadius()
+    {
+        if (_isCrouching)
+        {
+            detectionCollider.radius = crouchingDetectionRadius;
+        }
+        else if (Input.GetKey(KeyCode.LeftShift))
+        {
+            detectionCollider.radius = sprintingDetectionRadius;
+        }
+        else
+        {
+            detectionCollider.radius = playerDetectionRadius;
+        }
     }
 
     #endregion
