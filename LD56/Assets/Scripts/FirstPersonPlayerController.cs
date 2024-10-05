@@ -11,6 +11,10 @@ public class FirstPersonPlayerController : MonoBehaviour
     [SerializeField]
     private float playerSpeed = 2.0f;
     [SerializeField]
+    private float sprintSpeed = 4.0f;
+    [SerializeField]
+    private float crouchSpeed = 1.0f;
+    [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
@@ -24,6 +28,11 @@ public class FirstPersonPlayerController : MonoBehaviour
     private LayerMask groundMask;
 
     private bool _isGrounded;
+    // Fields for Double Jump
+    private int _jumpCount = 0;
+    private const int MaxJumpCount = 2;
+    // Fields for Crouching
+    private bool _isCrouching = false;
 
     void Start()
     {
@@ -45,17 +54,38 @@ public class FirstPersonPlayerController : MonoBehaviour
         if (_isGrounded && m_PlayerVelocity.y < 0)
         {
             m_PlayerVelocity.y = -0.1f;
+            _jumpCount = 0;
         }
 
         Vector2 movement = m_InputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
         move = m_CameraTransform.forward * move.z + m_CameraTransform.right * move.x;
-        m_CharacterController.Move(move * (Time.deltaTime * playerSpeed));
+
+        // Handle sprinting and crouching
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            _isCrouching = false;
+            m_CharacterController.height = 2.0f; // Reset height if previously crouched
+        }
+        else if (Input.GetKey(KeyCode.LeftControl))
+        {
+            _isCrouching = true;
+            m_CharacterController.height = 1.0f; // Reduce height for crouching
+        }
+        else
+        {
+            _isCrouching = false;
+            m_CharacterController.height = 2.0f; // Reset height if previously crouched
+        }
+
+        float currentSpeed = _isCrouching ? crouchSpeed : (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : playerSpeed);
+        m_CharacterController.Move(move * (Time.deltaTime * currentSpeed));
 
         // Handle jumping
-        if (m_InputManager.PlayerJumpedThisFrame() && _isGrounded)
+        if (m_InputManager.PlayerJumpedThisFrame() && _jumpCount < MaxJumpCount)
         {
             m_PlayerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            _jumpCount++;
         }
 
         m_PlayerVelocity.y += gravityValue * Time.deltaTime;
