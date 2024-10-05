@@ -82,4 +82,13 @@ public class HUDUIManager : MonoBehaviour
             cooldownSlider.value = 0;
         }
     }
+    public void EnableHUD()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void DisableHUD()
+    {
+        gameObject.SetActive(false);
+    }
 }

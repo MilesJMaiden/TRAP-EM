@@ -1,118 +1,149 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonPlayerController : MonoBehaviour
 {
-    public delegate void GrappleUsedHandler(); // Delegate for grapple hook usage
-    public static event GrappleUsedHandler OnGrappleUsed; // Event for grapple hook usage
+    #region Delegates and Events
 
+    // Delegate for grapple hook usage
+    public delegate void GrappleUsedHandler();
+    // Event for grapple hook usage
+    public static event GrappleUsedHandler OnGrappleUsed;
+
+    // Delegate for grapple hook usage
+    public delegate void DashUsedHandler();
+    // Event for grapple hook usage
+    public static event DashUsedHandler OnDashUsed;
+
+    #endregion
+
+    #region Serialized Fields
+
+    [Header("Player Settings")]
+    [SerializeField] private float playerSpeed = 2.0f;
+    [SerializeField] private float sprintSpeed = 4.0f;
+    [SerializeField] private float crouchSpeed = 1.0f;
+    [SerializeField] private float jumpHeight = 1.0f;
+
+    [SerializeField] private float gravityValue = -9.81f;
+    [SerializeField] private int maxJumpCount = 2;
+
+    [Header("Ground Detection")]
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundDistance = 0.1f;
+    [SerializeField] private LayerMask groundMask;
+
+    [Header("Grapple Hook")]
+    [SerializeField] private float grappleDistance = 20.0f;
+    [SerializeField] private float grappleSpeed = 10.0f;
+    [SerializeField] private float grappleCooldown = 15.0f;
+    [SerializeField] private GameObject grappleLineObject;
+    [SerializeField] private Slider grappleCooldownSlider;
+
+    [Header("Dash Settings")]
+    [SerializeField] private float dashCooldown = 5.0f;
+    [SerializeField] private float dashSpeed = 10.0f;
+    [SerializeField] private float dashDuration = 0.3f;
+    [SerializeField] private Slider dashCooldownSlider;
+
+
+    [Header("Camera Settings")]
+    [SerializeField] private GameObject CameraSource;  // Reference to the camera or object to move
+
+    #endregion
+
+    #region Private Fields
     private CharacterController m_CharacterController;
-    private Vector3 m_PlayerVelocity;
-    private InputManager m_InputManager;
     private Transform m_CameraTransform;
+    private InputManager m_InputManager;
     private LineRenderer m_LineRenderer;
+    private Vector3 m_PlayerVelocity;
+    private Vector3 originalCenter;
+    private Vector3 cameraOriginalPosition;
+    private bool _isGrounded;
+    private bool _isCrouching;
+    private bool _isGrappling;
+    private bool _canGrapple = true;
+    private float _grappleCooldownTime;
+    private Vector3 _grapplePoint;
+    private float _currentSpeed;
+    private bool isPaused = false;
+    private int _jumpCount = 0;
+    private bool _canDash = true;
+    private bool _isDashing = false;
+    private float _dashTime;
+    private float _dashCooldownTime;
+    #endregion
 
-    [SerializeField]
-    private float playerSpeed = 2.0f; // Speed of the player
-    [SerializeField]
-    private float sprintSpeed = 4.0f; // Speed when sprinting
-    [SerializeField]
-    private float crouchSpeed = 1.0f; // Speed when crouching
-    [SerializeField]
-    private float _currentSpeed; // Current speed of the player
-    [SerializeField]
-    private float jumpHeight = 1.0f; // Height of the jump
-    [SerializeField]
-    private float dashSpeed = 10.0f; // Speed during dash
-    [SerializeField]
-    private float dashDuration = 0.2f; // Duration of the dash
-    [SerializeField]
-    private float gravityValue = -9.81f; // Gravity value
+    #region Unity Methods
 
-    // New fields for ground detection
-    [SerializeField]
-    private Transform groundCheck; // Transform to check if the player is grounded
-    [SerializeField]
-    private float groundDistance = 0.1f; // Distance to the ground
-    [SerializeField]
-    private LayerMask groundMask; // Mask to determine what is ground
+    private void Start()
+    {
+        InitializeComponents();
+    }
 
-    private bool _isGrounded; // Boolean to store whether the player is grounded or not
-    // Fields for Double Jump
-    private int _jumpCount = 0; // Number of jumps performed
-    private const int MaxJumpCount = 2; // Maximum number of jumps allowed
-    // Fields for Crouching
-    private bool _isCrouching = false; // Boolean to store whether the player is crouching or not
-    // Fields for Dashing
-    private bool _canDash = true; // Boolean to store whether the player can dash or not
-    private bool _isDashing = false; // Boolean to store whether the player is dashing or not
-    private float _dashTime; // Time remaining for the dash
+    private void Update()
+    {
+        if (isPaused) return;
 
-    // Fields for Grapple Hook
-    [SerializeField]
-    private float grappleDistance = 20.0f; // Maximum distance for the grapple hook
-    [SerializeField]
-    private float grappleSpeed = 10.0f; // Speed of the grapple hook
-    [SerializeField]
-    private float grappleCooldown = 15.0f; // Cooldown time for the grapple hook
-    private bool _canGrapple = true; // Boolean to store whether the player can use the grapple hook
-    private bool _isGrappling = false; // Boolean to store whether the player is currently grappling
-    private Vector3 _grapplePoint; // Point to grapple to
-    private float _grappleCooldownTime; // Time remaining for the grapple cooldown
-    // Reference to the GameObject containing the LineRenderer
-    [SerializeField]
-    private GameObject grappleLineObject;
-    // Reference to the Grapple Cooldown Slider
-    [SerializeField]
-    private Slider grappleCooldownSlider;
+        HandleGroundCheck();
+        HandleMovement();
+        HandleCrouching();
+        HandleJumping();
+        HandleGrappleHook();
+        ApplyGravity();
+    }
 
-    private bool isPaused = false; // Boolean to store whether the game is paused or not
+    private void OnDrawGizmosSelected()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
+        }
+    }
 
-    private Vector3 originalCenter; // Original center of the CharacterController
+    #endregion
 
-    [SerializeField]
-    private GameObject CameraSource;  // Reference to the camera or object to move
+    #region Initialization
 
-    private Vector3 cameraOriginalPosition;  // To store the original position of the CameraSource
-
-    // New field for camera tracking position
-
-
-
-    void Start()
+    private void InitializeComponents()
     {
         m_CharacterController = GetComponent<CharacterController>();
         m_InputManager = InputManager.Instance;
-
-        // Store the original center of the CharacterController
         originalCenter = m_CharacterController.center;
 
-
-        // Get the LineRenderer from the referenced GameObject
-        if (grappleLineObject != null)
-        {
-            m_LineRenderer = grappleLineObject.GetComponent<LineRenderer>();
-        }
-        else
-        {
-            Debug.LogError("GrappleLineObject is not assigned in the Inspector.");
-        }
+        if (Camera.main != null) m_CameraTransform = Camera.main.transform;
 
         // Lock the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // Initialize LineRenderer
-        if (m_LineRenderer != null)
+        // Store the original position of the CameraSource
+        if (CameraSource != null)
         {
+            cameraOriginalPosition = CameraSource.transform.localPosition;
+        }
+        else
+        {
+            Debug.LogError("CameraSource is not assigned!");
+        }
+
+        // Initialize the LineRenderer for the grapple hook
+        if (grappleLineObject != null)
+        {
+            m_LineRenderer = grappleLineObject.GetComponent<LineRenderer>();
             m_LineRenderer.positionCount = 2;
             m_LineRenderer.enabled = false;
         }
+        else
+        {
+            Debug.LogError("GrappleLineObject is not assigned!");
+        }
 
-        _currentSpeed = playerSpeed; // Set the current speed to the player speed
-
-        // Initialize Grapple Cooldown Slider
+        // Initialize the grapple cooldown slider
         if (grappleCooldownSlider != null)
         {
             grappleCooldownSlider.maxValue = grappleCooldown;
@@ -120,111 +151,170 @@ public class FirstPersonPlayerController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("GrappleCooldownSlider is not assigned in the Inspector.");
+            Debug.LogError("GrappleCooldownSlider is not assigned!");
         }
 
-        if (CameraSource != null)
-        {
-            cameraOriginalPosition = CameraSource.transform.localPosition;  // Store the original local position
-        }
-        else
-        {
-            Debug.LogError("CameraSource is not assigned in the Inspector.");
-        }
+
+
+        _currentSpeed = playerSpeed; // Set the default player speed
     }
 
-    void Update()
+    #endregion
+
+    #region Player Rotation
+
+    /// <summary>
+    /// Rotates the player to face the same direction as the Cinemachine camera.
+    /// </summary>
+
+
+    #endregion
+
+    #region Movement and Crouching
+
+    /// <summary>
+    /// Handles player movement.
+    /// </summary>
+    private void HandleMovement()
     {
-        if (isPaused) return; // Do not update if the game is paused
-
-        // Use CheckSphere for ground detection
-        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (_isGrounded && m_PlayerVelocity.y < 0)
-        {
-            m_PlayerVelocity.y = -0.1f;
-            _jumpCount = 0;
-            _canDash = true; // Reset dash ability when grounded
-        }
-
         Vector2 movement = m_InputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
 
+        // Synchronize player rotation with the camera's forward direction (Y-axis only)
+        Vector3 cameraForward = m_CameraTransform.forward;
+        cameraForward.y = 0f; // Zero out Y to keep the player upright
+        transform.rotation = Quaternion.LookRotation(cameraForward); // Rotate player to face camera direction
+
+        // Movement based on camera's forward and right vectors
+        move = m_CameraTransform.forward * move.z + m_CameraTransform.right * move.x;
+
+        m_CharacterController.Move(move * (Time.deltaTime * _currentSpeed));
+        HandleDashing(move);
+        // Update the camera position to follow the player
+        if (CameraSource != null)
+        {
+            CameraSource.transform.position = transform.position + cameraOriginalPosition;
+        }
+    }
+
+    /// <summary>
+    /// Handles crouching behavior, including moving the CameraSource.
+    /// </summary>
+    private void HandleCrouching()
+    {
         if (_isGrounded)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftControl))
             {
+                if (!_isCrouching)
+                {
+                    _isCrouching = true;
+                    m_CharacterController.height = 1.0f;
+                    m_CharacterController.center = new Vector3(originalCenter.x, -0.5f, originalCenter.z);
+
+                    // Move the CameraSource down by 0.75 units when crouching
+                    CameraSource.transform.localPosition = new Vector3(cameraOriginalPosition.x, cameraOriginalPosition.y - 0.75f, cameraOriginalPosition.z);
+                    _currentSpeed = crouchSpeed;
+                }
+            }
+            else if (_isCrouching)
+            {
+                // Reset the camera and player position when standing up
                 _isCrouching = false;
                 m_CharacterController.height = 2.0f;
                 m_CharacterController.center = originalCenter;
-                CameraSource.transform.localPosition = cameraOriginalPosition;  // Reset camera to original position
 
-                _currentSpeed = sprintSpeed;
-            }
-            else if (Input.GetKey(KeyCode.LeftControl))
-            {
-                _isCrouching = true;
-                m_CharacterController.height = 1.0f;
-                m_CharacterController.center = new Vector3(originalCenter.x, -0.5f, originalCenter.z);
-                CameraSource.transform.localPosition = new Vector3(cameraOriginalPosition.x, cameraOriginalPosition.y - 0.75f, cameraOriginalPosition.z);  // Move camera down
-
-                _currentSpeed = crouchSpeed;
-            }
-            else
-            {
-                if (_isCrouching && !Input.GetKey(KeyCode.LeftControl))
-                {
-                    _isCrouching = false;
-                    m_CharacterController.height = 2.0f;
-                    m_CharacterController.center = originalCenter;
-                    CameraSource.transform.localPosition = cameraOriginalPosition;  // Reset camera to original position
-                }
+                // Reset the CameraSource back to its original position
+                CameraSource.transform.localPosition = cameraOriginalPosition;
                 _currentSpeed = playerSpeed;
             }
         }
+    }
+    /// <summary>
+    /// Handles Dashing behaviour
+    /// </summary>
+    private void HandleDashing(Vector3 direction)
+    {
+        // If the player is not dashing, check if the dash cooldown has expired
+        if (!_canDash)
+        {
+            _dashTime -= Time.deltaTime;
+            if (dashCooldownSlider != null)
+            {
+                dashCooldownSlider.value = _dashCooldownTime;
+            }
 
+            if (_dashCooldownTime <= 0)
+            {
+                _canDash = true;
+                if (dashCooldownSlider != null)
+                {
+                    dashCooldownSlider.value = dashCooldown;
+                }
+            }
+        }
 
-        // Handle dashing
-        if (Input.GetKeyDown(KeyCode.E) && !_isGrounded && _canDash)
+        if (Input.GetKeyDown(KeyCode.E) && _canDash)
         {
             _isDashing = true;
             _dashTime = dashDuration;
             _canDash = false;
+            _dashCooldownTime = dashCooldown; 
         }
-
+        
         if (_isDashing)
         {
             if (_dashTime > 0)
             {
-                m_CharacterController.Move(move * (Time.deltaTime * dashSpeed));
+                m_CharacterController.Move(direction * (Time.deltaTime * dashSpeed));
                 _dashTime -= Time.deltaTime;
             }
             else
             {
                 _isDashing = false;
+                OnDashUsed?.Invoke(); // Trigger the event
+
+                if (grappleCooldownSlider != null)
+                {
+                    grappleCooldownSlider.value = 0;
+                }
+
             }
         }
         else
         {
-            m_CharacterController.Move(move * (Time.deltaTime * _currentSpeed)); // Modified to use _currentSpeed
+            m_CharacterController.Move(direction * (Time.deltaTime * _currentSpeed)); // Modified to use _currentSpeed
         }
+    }
 
-        // Handle jumping
-        if (m_InputManager.PlayerJumpedThisFrame() && _jumpCount < MaxJumpCount)
+    #endregion
+
+    #region Jumping
+
+    /// <summary>
+    /// Handles jumping logic.
+    /// </summary>
+    private void HandleJumping()
+    {
+        if (m_InputManager.PlayerJumpedThisFrame() && _jumpCount < maxJumpCount)
         {
-            m_PlayerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            m_PlayerVelocity.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
             _jumpCount++;
-            Debug.Log("isCrouched" + _isCrouching);
-            Debug.Log("m_CharacterController.height: " + m_CharacterController.height);
-            Debug.Log("isGrounded: " + _isGrounded);
         }
+    }
 
-        m_PlayerVelocity.y += gravityValue * Time.deltaTime;
-        m_CharacterController.Move(m_PlayerVelocity * Time.deltaTime);
+    #endregion
 
-        // Handle grapple hook
+    #region Grapple Hook
+
+    /// <summary>
+    /// Handles grapple hook mechanics.
+    /// </summary>
+    private void HandleGrappleHook()
+    {
         if (Input.GetMouseButtonDown(1) && _canGrapple)
         {
+            // Debug.Log("Grapple Hook used!");
             RaycastHit hit;
             if (Physics.Raycast(m_CameraTransform.position, m_CameraTransform.forward, out hit, grappleDistance, groundMask))
             {
@@ -232,11 +322,10 @@ public class FirstPersonPlayerController : MonoBehaviour
                 _grapplePoint = hit.point;
                 _canGrapple = false;
                 _grappleCooldownTime = grappleCooldown;
-                m_LineRenderer.enabled = true; // Enable the line renderer
-
+                m_LineRenderer.enabled = true;
+                // Debug.Log("Grapple Point: " + _grapplePoint);
                 OnGrappleUsed?.Invoke(); // Trigger the event
 
-                // Start the grapple cooldown
                 if (grappleCooldownSlider != null)
                 {
                     grappleCooldownSlider.value = 0;
@@ -254,29 +343,22 @@ public class FirstPersonPlayerController : MonoBehaviour
             }
             else
             {
+                Debug.Log("Grapple Hooking!");
                 Vector3 direction = (_grapplePoint - transform.position).normalized;
                 m_CharacterController.Move(direction * (Time.deltaTime * grappleSpeed));
 
-                // Update the line renderer positions
                 m_LineRenderer.SetPosition(0, transform.position);
                 m_LineRenderer.SetPosition(1, _grapplePoint);
 
-                // Check if the player has reached the grapple point
                 if (Vector3.Distance(transform.position, _grapplePoint) < 1.0f)
                 {
                     _isGrappling = false;
-                    m_PlayerVelocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityValue); // Small jump to prevent getting stuck
-                    m_LineRenderer.enabled = false; // Disable the line renderer
-                }
-                else
-                {
-                    // Disable gravity while grappling
-                    m_PlayerVelocity.y = 0;
+                    m_PlayerVelocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
+                    m_LineRenderer.enabled = false;
                 }
             }
         }
 
-        // Handle grapple cooldown
         if (!_canGrapple)
         {
             _grappleCooldownTime -= Time.deltaTime;
@@ -294,22 +376,46 @@ public class FirstPersonPlayerController : MonoBehaviour
                 }
             }
         }
+    }
 
+    #endregion
+
+    #region Gravity and Ground Check
+
+    /// <summary>
+    /// Applies gravity to the player.
+    /// </summary>
+    private void ApplyGravity()
+    {
         m_PlayerVelocity.y += gravityValue * Time.deltaTime;
         m_CharacterController.Move(m_PlayerVelocity * Time.deltaTime);
     }
+
+    /// <summary>
+    /// Checks if the player is grounded.
+    /// </summary>
+    private void HandleGroundCheck()
+    {
+        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (_isGrounded && m_PlayerVelocity.y < 0)
+        {
+            m_PlayerVelocity.y = -0.1f;  // Small buffer to keep the player grounded
+            _jumpCount = 0;
+        }
+    }
+
+    #endregion
+
+    #region Miscellaneous
+
+    /// <summary>
+    /// Pauses or unpauses the player controller.
+    /// </summary>
     public void SetPaused(bool paused)
     {
         isPaused = paused;
     }
 
-    // To visualize the ground check in the editor
-    private void OnDrawGizmosSelected()
-    {
-        if (groundCheck != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
-        }
-    }
+    #endregion
 }
