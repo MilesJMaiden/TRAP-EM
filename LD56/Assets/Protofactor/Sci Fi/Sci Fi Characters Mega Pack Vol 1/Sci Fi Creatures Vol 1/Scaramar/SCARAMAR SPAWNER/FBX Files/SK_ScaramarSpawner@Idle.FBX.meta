@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: 46ea392511502d844846ff68e3ea1332
+timeCreated: 1548201704
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: root
+    100002: ScaramarSpawnerBlister_1
+    100004: ScaramarSpawnerBlister_10
+    100006: ScaramarSpawnerBlister_11
+    100008: ScaramarSpawnerBlister_12
+    100010: ScaramarSpawnerBlister_13
+    100012: ScaramarSpawnerBlister_14
+    100014: ScaramarSpawnerBlister_15
+    100016: ScaramarSpawnerBlister_16
+    100018: ScaramarSpawnerBlister_17
+    100020: ScaramarSpawnerBlister_18
+    100022: ScaramarSpawnerBlister_19
+    100024: ScaramarSpawnerBlister_2
+    100026: ScaramarSpawnerBlister_20
+    100028: ScaramarSpawnerBlister_21
+    100030: ScaramarSpawnerBlister_22
+    100032: ScaramarSpawnerBlister_23
+    100034: ScaramarSpawnerBlister_24
+    100036: ScaramarSpawnerBlister_25
+    100038: ScaramarSpawnerBlister_3
+    100040: ScaramarSpawnerBlister_4
+    100042: ScaramarSpawnerBlister_5
+    100044: ScaramarSpawnerBlister_6
+    100046: ScaramarSpawnerBlister_7
+    100048: ScaramarSpawnerBlister_8
+    100050: ScaramarSpawnerBlister_9
+    100052: ScaramarSpawnerBody_1
+    100054: ScaramarSpawnerBody_2
+    100056: ScaramarSpawnerBody_3
+    100058: ScaramarSpawnerBody_4
+    100060: ScaramarSpawnerBody_5
+    100062: //RootNode
+    400000: root
+    400002: ScaramarSpawnerBlister_1
+    400004: ScaramarSpawnerBlister_10
+    400006: ScaramarSpawnerBlister_11
+    400008: ScaramarSpawnerBlister_12
+    400010: ScaramarSpawnerBlister_13
+    400012: ScaramarSpawnerBlister_14
+    400014: ScaramarSpawnerBlister_15
+    400016: ScaramarSpawnerBlister_16
+    400018: ScaramarSpawnerBlister_17
+    400020: ScaramarSpawnerBlister_18
+    400022: ScaramarSpawnerBlister_19
+    400024: ScaramarSpawnerBlister_2
+    400026: ScaramarSpawnerBlister_20
+    400028: ScaramarSpawnerBlister_21
+    400030: ScaramarSpawnerBlister_22
+    400032: ScaramarSpawnerBlister_23
+    400034: ScaramarSpawnerBlister_24
+    400036: ScaramarSpawnerBlister_25
+    400038: ScaramarSpawnerBlister_3
+    400040: ScaramarSpawnerBlister_4
+    400042: ScaramarSpawnerBlister_5
+    400044: ScaramarSpawnerBlister_6
+    400046: ScaramarSpawnerBlister_7
+    400048: ScaramarSpawnerBlister_8
+    400050: ScaramarSpawnerBlister_9
+    400052: ScaramarSpawnerBody_1
+    400054: ScaramarSpawnerBody_2
+    400056: ScaramarSpawnerBody_3
+    400058: ScaramarSpawnerBody_4
+    400060: ScaramarSpawnerBody_5
+    400062: //RootNode
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: root
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 57f0bfc69689b044fb004cc7d53464b8,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,118 @@
+fileFormatVersion: 2
+guid: 3c1dd68ff169a864d9ea9b08136ce168
+timeCreated: 1571420567
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: LandingPod_DoorLower_1
+    100004: LandingPod_DoorLower_2
+    100006: LandingPod_DoorLower_3
+    100008: LandingPod_DoorLower_4
+    100010: LandingPod_DoorUpper_1
+    100012: LandingPod_DoorUpper_2
+    100014: LandingPod_DoorUpper_3
+    100016: LandingPod_DoorUpper_4
+    100018: LandingPod_LegBackLeft
+    100020: LandingPod_LegBackRight
+    100022: LandingPod_LegFrontLeft
+    100024: LandingPod_LegFrontRight
+    100026: LandingPod_Main
+    100028: LandingPod_SecurityLock_1
+    100030: LandingPod_SecurityLock_2
+    100032: LandingPod_SecurityLock_3
+    100034: LandingPod_SecurityLock_4
+    100036: Root
+    400000: //RootNode
+    400002: LandingPod_DoorLower_1
+    400004: LandingPod_DoorLower_2
+    400006: LandingPod_DoorLower_3
+    400008: LandingPod_DoorLower_4
+    400010: LandingPod_DoorUpper_1
+    400012: LandingPod_DoorUpper_2
+    400014: LandingPod_DoorUpper_3
+    400016: LandingPod_DoorUpper_4
+    400018: LandingPod_LegBackLeft
+    400020: LandingPod_LegBackRight
+    400022: LandingPod_LegFrontLeft
+    400024: LandingPod_LegFrontRight
+    400026: LandingPod_Main
+    400028: LandingPod_SecurityLock_1
+    400030: LandingPod_SecurityLock_2
+    400032: LandingPod_SecurityLock_3
+    400034: LandingPod_SecurityLock_4
+    400036: Root
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: Root
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 2db82b0e504c51f4ca482332972a5450,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

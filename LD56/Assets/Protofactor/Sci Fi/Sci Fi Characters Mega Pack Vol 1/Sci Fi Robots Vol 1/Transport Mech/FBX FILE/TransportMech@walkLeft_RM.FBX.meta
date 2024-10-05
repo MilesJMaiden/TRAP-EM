@@ -1,0 +1,248 @@
+fileFormatVersion: 2
+guid: 5b40820e7cfeff748b32ced745b06c7a
+timeCreated: 1561756444
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: root
+    100002: //RootNode
+    100004: TransportMech_CalfBackLeft
+    100006: TransportMech_CalfBackRight
+    100008: TransportMech_CalfFrontLeft
+    100010: TransportMech_CalfFrontRight
+    100012: TransportMech_FootBackLeft
+    100014: TransportMech_FootBackRight
+    100016: TransportMech_FootFrontLeft
+    100018: TransportMech_FootFrontRight
+    100020: TransportMech_HipBackLeft
+    100022: TransportMech_HipBackRight
+    100024: TransportMech_HipFrontLeft
+    100026: TransportMech_HipFrontRight
+    100028: TransportMech_MainDeck
+    100030: TransportMech_ThighBackLeft
+    100032: TransportMech_ThighBackRight
+    100034: TransportMech_ThighFrontLeft
+    100036: TransportMech_ThighFrontRight
+    100038: TransportMech_ToeBackLeft_0
+    100040: TransportMech_ToeBackLeft_1
+    100042: TransportMech_ToeBackLeft_2
+    100044: TransportMech_ToeBackLeft_3
+    100046: TransportMech_ToeBackRight_0
+    100048: TransportMech_ToeBackRight_1
+    100050: TransportMech_ToeBackRight_2
+    100052: TransportMech_ToeBackRight_3
+    100054: TransportMech_ToeFrontLeft_0
+    100056: TransportMech_ToeFrontLeft_1
+    100058: TransportMech_ToeFrontLeft_2
+    100060: TransportMech_ToeFrontLeft_3
+    100062: TransportMech_ToeFrontRight_0
+    100064: TransportMech_ToeFrontRight_1
+    100066: TransportMech_ToeFrontRight_2
+    100068: TransportMech_ToeFrontRight_3
+    400000: root
+    400002: //RootNode
+    400004: TransportMech_CalfBackLeft
+    400006: TransportMech_CalfBackRight
+    400008: TransportMech_CalfFrontLeft
+    400010: TransportMech_CalfFrontRight
+    400012: TransportMech_FootBackLeft
+    400014: TransportMech_FootBackRight
+    400016: TransportMech_FootFrontLeft
+    400018: TransportMech_FootFrontRight
+    400020: TransportMech_HipBackLeft
+    400022: TransportMech_HipBackRight
+    400024: TransportMech_HipFrontLeft
+    400026: TransportMech_HipFrontRight
+    400028: TransportMech_MainDeck
+    400030: TransportMech_ThighBackLeft
+    400032: TransportMech_ThighBackRight
+    400034: TransportMech_ThighFrontLeft
+    400036: TransportMech_ThighFrontRight
+    400038: TransportMech_ToeBackLeft_0
+    400040: TransportMech_ToeBackLeft_1
+    400042: TransportMech_ToeBackLeft_2
+    400044: TransportMech_ToeBackLeft_3
+    400046: TransportMech_ToeBackRight_0
+    400048: TransportMech_ToeBackRight_1
+    400050: TransportMech_ToeBackRight_2
+    400052: TransportMech_ToeBackRight_3
+    400054: TransportMech_ToeFrontLeft_0
+    400056: TransportMech_ToeFrontLeft_1
+    400058: TransportMech_ToeFrontLeft_2
+    400060: TransportMech_ToeFrontLeft_3
+    400062: TransportMech_ToeFrontRight_0
+    400064: TransportMech_ToeFrontRight_1
+    400066: TransportMech_ToeFrontRight_2
+    400068: TransportMech_ToeFrontRight_3
+    7400000: walkLeft_RM
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: walkLeft_RM
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/TransportMech_MainDeck
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackLeft
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackLeft/TransportMech_ThighBackLeft
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackLeft/TransportMech_ThighBackLeft/TransportMech_CalfBackLeft
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackLeft/TransportMech_ThighBackLeft/TransportMech_CalfBackLeft/TransportMech_FootBackLeft
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackLeft/TransportMech_ThighBackLeft/TransportMech_CalfBackLeft/TransportMech_FootBackLeft/TransportMech_ToeBackLeft_0
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackLeft/TransportMech_ThighBackLeft/TransportMech_CalfBackLeft/TransportMech_FootBackLeft/TransportMech_ToeBackLeft_1
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackLeft/TransportMech_ThighBackLeft/TransportMech_CalfBackLeft/TransportMech_FootBackLeft/TransportMech_ToeBackLeft_2
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackLeft/TransportMech_ThighBackLeft/TransportMech_CalfBackLeft/TransportMech_FootBackLeft/TransportMech_ToeBackLeft_3
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackRight
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackRight/TransportMech_ThighBackRight
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackRight/TransportMech_ThighBackRight/TransportMech_CalfBackRight
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackRight/TransportMech_ThighBackRight/TransportMech_CalfBackRight/TransportMech_FootBackRight
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackRight/TransportMech_ThighBackRight/TransportMech_CalfBackRight/TransportMech_FootBackRight/TransportMech_ToeBackRight_0
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackRight/TransportMech_ThighBackRight/TransportMech_CalfBackRight/TransportMech_FootBackRight/TransportMech_ToeBackRight_1
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackRight/TransportMech_ThighBackRight/TransportMech_CalfBackRight/TransportMech_FootBackRight/TransportMech_ToeBackRight_2
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipBackRight/TransportMech_ThighBackRight/TransportMech_CalfBackRight/TransportMech_FootBackRight/TransportMech_ToeBackRight_3
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontLeft
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontLeft/TransportMech_ThighFrontLeft
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontLeft/TransportMech_ThighFrontLeft/TransportMech_CalfFrontLeft
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontLeft/TransportMech_ThighFrontLeft/TransportMech_CalfFrontLeft/TransportMech_FootFrontLeft
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontLeft/TransportMech_ThighFrontLeft/TransportMech_CalfFrontLeft/TransportMech_FootFrontLeft/TransportMech_ToeFrontLeft_0
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontLeft/TransportMech_ThighFrontLeft/TransportMech_CalfFrontLeft/TransportMech_FootFrontLeft/TransportMech_ToeFrontLeft_1
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontLeft/TransportMech_ThighFrontLeft/TransportMech_CalfFrontLeft/TransportMech_FootFrontLeft/TransportMech_ToeFrontLeft_2
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontLeft/TransportMech_ThighFrontLeft/TransportMech_CalfFrontLeft/TransportMech_FootFrontLeft/TransportMech_ToeFrontLeft_3
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontRight
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontRight/TransportMech_ThighFrontRight
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontRight/TransportMech_ThighFrontRight/TransportMech_CalfFrontRight
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontRight/TransportMech_ThighFrontRight/TransportMech_CalfFrontRight/TransportMech_FootFrontRight
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontRight/TransportMech_ThighFrontRight/TransportMech_CalfFrontRight/TransportMech_FootFrontRight/TransportMech_ToeFrontRight_0
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontRight/TransportMech_ThighFrontRight/TransportMech_CalfFrontRight/TransportMech_FootFrontRight/TransportMech_ToeFrontRight_1
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontRight/TransportMech_ThighFrontRight/TransportMech_CalfFrontRight/TransportMech_FootFrontRight/TransportMech_ToeFrontRight_2
+        weight: 1
+      - path: root/TransportMech_MainDeck/TransportMech_HipFrontRight/TransportMech_ThighFrontRight/TransportMech_CalfFrontRight/TransportMech_FootFrontRight/TransportMech_ToeFrontRight_3
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: root
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 60ad3ae2be21cb84e8aa1bd25f843f8b,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

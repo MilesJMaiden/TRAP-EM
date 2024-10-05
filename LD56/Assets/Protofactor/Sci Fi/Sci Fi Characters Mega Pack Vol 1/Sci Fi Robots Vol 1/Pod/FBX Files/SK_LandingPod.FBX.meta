@@ -1,0 +1,220 @@
+fileFormatVersion: 2
+guid: 2db82b0e504c51f4ca482332972a5450
+timeCreated: 1571356658
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Mirrored
+    100002: //RootNode
+    100004: window
+    100006: LandingPod_DoorLower_1
+    100008: LandingPod_DoorLower_2
+    100010: LandingPod_DoorLower_3
+    100012: LandingPod_DoorLower_4
+    100014: LandingPod_DoorUpper_1
+    100016: LandingPod_DoorUpper_2
+    100018: LandingPod_DoorUpper_3
+    100020: LandingPod_DoorUpper_4
+    100022: LandingPod_LegBackLeft
+    100024: LandingPod_LegBackRight
+    100026: LandingPod_LegFrontLeft
+    100028: LandingPod_LegFrontRight
+    100030: LandingPod_Main
+    100032: LandingPod_SecurityLock_1
+    100034: LandingPod_SecurityLock_2
+    100036: LandingPod_SecurityLock_3
+    100038: LandingPod_SecurityLock_4
+    100040: Root
+    100042: SK_LandingPod
+    100044: Collider_LandingPod_DoorLower_1
+    100046: Collider_LandingPod_DoorLower_2
+    100048: Collider_LandingPod_DoorLower_3
+    100050: Collider_LandingPod_DoorLower_4
+    100052: Collider_LandingPod_DoorUpper_1
+    100054: Collider_LandingPod_DoorUpper_2
+    100056: Collider_LandingPod_DoorUpper_3
+    100058: Collider_LandingPod_DoorUpper_4
+    100060: Collider_LandingPod_LegBackLeft
+    100062: Collider_LandingPod_LegBackRight
+    100064: Collider_LandingPod_LegFrontLeft
+    100066: Collider_LandingPod_LegFrontRight
+    100068: Collider_LandingPod_Main
+    100070: Collider_LandingPod_SecurityLock_1
+    100072: Collider_LandingPod_SecurityLock_2
+    100074: Collider_LandingPod_SecurityLock_3
+    100076: Collider_LandingPod_SecurityLock_4
+    400000: Mirrored
+    400002: //RootNode
+    400004: window
+    400006: LandingPod_DoorLower_1
+    400008: LandingPod_DoorLower_2
+    400010: LandingPod_DoorLower_3
+    400012: LandingPod_DoorLower_4
+    400014: LandingPod_DoorUpper_1
+    400016: LandingPod_DoorUpper_2
+    400018: LandingPod_DoorUpper_3
+    400020: LandingPod_DoorUpper_4
+    400022: LandingPod_LegBackLeft
+    400024: LandingPod_LegBackRight
+    400026: LandingPod_LegFrontLeft
+    400028: LandingPod_LegFrontRight
+    400030: LandingPod_Main
+    400032: LandingPod_SecurityLock_1
+    400034: LandingPod_SecurityLock_2
+    400036: LandingPod_SecurityLock_3
+    400038: LandingPod_SecurityLock_4
+    400040: Root
+    400042: SK_LandingPod
+    400044: Collider_LandingPod_DoorLower_1
+    400046: Collider_LandingPod_DoorLower_2
+    400048: Collider_LandingPod_DoorLower_3
+    400050: Collider_LandingPod_DoorLower_4
+    400052: Collider_LandingPod_DoorUpper_1
+    400054: Collider_LandingPod_DoorUpper_2
+    400056: Collider_LandingPod_DoorUpper_3
+    400058: Collider_LandingPod_DoorUpper_4
+    400060: Collider_LandingPod_LegBackLeft
+    400062: Collider_LandingPod_LegBackRight
+    400064: Collider_LandingPod_LegFrontLeft
+    400066: Collider_LandingPod_LegFrontRight
+    400068: Collider_LandingPod_Main
+    400070: Collider_LandingPod_SecurityLock_1
+    400072: Collider_LandingPod_SecurityLock_2
+    400074: Collider_LandingPod_SecurityLock_3
+    400076: Collider_LandingPod_SecurityLock_4
+    2300000: Mirrored
+    2300002: window
+    2300004: //RootNode
+    2300006: SK_LandingPod
+    2300008: Collider_LandingPod_DoorLower_1
+    2300010: Collider_LandingPod_DoorLower_2
+    2300012: Collider_LandingPod_DoorLower_3
+    2300014: Collider_LandingPod_DoorLower_4
+    2300016: Collider_LandingPod_DoorUpper_1
+    2300018: Collider_LandingPod_DoorUpper_2
+    2300020: Collider_LandingPod_DoorUpper_3
+    2300022: Collider_LandingPod_DoorUpper_4
+    2300024: Collider_LandingPod_LegBackLeft
+    2300026: Collider_LandingPod_LegBackRight
+    2300028: Collider_LandingPod_LegFrontLeft
+    2300030: Collider_LandingPod_LegFrontRight
+    2300032: Collider_LandingPod_Main
+    2300034: Collider_LandingPod_SecurityLock_1
+    2300036: Collider_LandingPod_SecurityLock_2
+    2300038: Collider_LandingPod_SecurityLock_3
+    2300040: Collider_LandingPod_SecurityLock_4
+    3300000: Mirrored
+    3300002: window
+    3300004: //RootNode
+    3300006: SK_LandingPod
+    3300008: Collider_LandingPod_DoorLower_1
+    3300010: Collider_LandingPod_DoorLower_2
+    3300012: Collider_LandingPod_DoorLower_3
+    3300014: Collider_LandingPod_DoorLower_4
+    3300016: Collider_LandingPod_DoorUpper_1
+    3300018: Collider_LandingPod_DoorUpper_2
+    3300020: Collider_LandingPod_DoorUpper_3
+    3300022: Collider_LandingPod_DoorUpper_4
+    3300024: Collider_LandingPod_LegBackLeft
+    3300026: Collider_LandingPod_LegBackRight
+    3300028: Collider_LandingPod_LegFrontLeft
+    3300030: Collider_LandingPod_LegFrontRight
+    3300032: Collider_LandingPod_Main
+    3300034: Collider_LandingPod_SecurityLock_1
+    3300036: Collider_LandingPod_SecurityLock_2
+    3300038: Collider_LandingPod_SecurityLock_3
+    3300040: Collider_LandingPod_SecurityLock_4
+    4300000: Mirrored
+    4300002: window
+    4300004: SK_LandingPod
+    4300006: Collider_LandingPod_SecurityLock_4
+    4300008: Collider_LandingPod_DoorUpper_4
+    4300010: Collider_LandingPod_DoorLower_4
+    4300012: Collider_LandingPod_SecurityLock_1
+    4300014: Collider_LandingPod_DoorUpper_1
+    4300016: Collider_LandingPod_DoorLower_1
+    4300018: Collider_LandingPod_SecurityLock_2
+    4300020: Collider_LandingPod_DoorUpper_2
+    4300022: Collider_LandingPod_DoorLower_2
+    4300024: Collider_LandingPod_SecurityLock_3
+    4300026: Collider_LandingPod_DoorUpper_3
+    4300028: Collider_LandingPod_DoorLower_3
+    4300030: Collider_LandingPod_LegFrontLeft
+    4300032: Collider_LandingPod_LegFrontRight
+    4300034: Collider_LandingPod_LegBackRight
+    4300036: Collider_LandingPod_LegBackLeft
+    4300038: Collider_LandingPod_Main
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: SK_LandingPod
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: Root
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

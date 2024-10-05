@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: ecd329d8935cbcf44b4acaad42451977
+timeCreated: 1579997042
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: root
+    100002: //RootNode
+    100004: ScientistDroid_CalfLeft
+    100006: ScientistDroid_CalfRight
+    100008: ScientistDroid_ClavicleLeft
+    100010: ScientistDroid_ClavicleRight
+    100012: ScientistDroid_FingerA1Left
+    100014: ScientistDroid_FingerA1Right
+    100016: ScientistDroid_FingerA2Left
+    100018: ScientistDroid_FingerA2Right
+    100020: ScientistDroid_FingerB1
+    100022: ScientistDroid_FingerB1Right
+    100024: ScientistDroid_FingerB2
+    100026: ScientistDroid_FingerB2Right
+    100028: ScientistDroid_FingerC1
+    100030: ScientistDroid_FingerC1Right
+    100032: ScientistDroid_FingerC2
+    100034: ScientistDroid_FingerC2Right
+    100036: ScientistDroid_FootLeft
+    100038: ScientistDroid_FootRight
+    100040: ScientistDroid_ForearmLeft
+    100042: ScientistDroid_ForearmRight
+    100044: ScientistDroid_HandLeft
+    100046: ScientistDroid_HandRight
+    100048: ScientistDroid_Head
+    100050: ScientistDroid_HipLeft
+    100052: ScientistDroid_HipRight
+    100054: ScientistDroid_Neck1
+    100056: ScientistDroid_Neck2
+    100058: ScientistDroid_Pelvis
+    100060: ScientistDroid_Scopes
+    100062: ScientistDroid_Spine
+    100064: ScientistDroid_ThighLeft
+    100066: ScientistDroid_ThighRight
+    100068: ScientistDroid_ToeLeft
+    100070: ScientistDroid_ToeRight
+    100072: ScientistDroid_Torso
+    100074: ScientistDroid_UpperArmLeft
+    100076: ScientistDroid_UpperArmRight
+    100078: ScientistDroid_WristLeft
+    100080: ScientistDroid_WristRight
+    400000: root
+    400002: //RootNode
+    400004: ScientistDroid_CalfLeft
+    400006: ScientistDroid_CalfRight
+    400008: ScientistDroid_ClavicleLeft
+    400010: ScientistDroid_ClavicleRight
+    400012: ScientistDroid_FingerA1Left
+    400014: ScientistDroid_FingerA1Right
+    400016: ScientistDroid_FingerA2Left
+    400018: ScientistDroid_FingerA2Right
+    400020: ScientistDroid_FingerB1
+    400022: ScientistDroid_FingerB1Right
+    400024: ScientistDroid_FingerB2
+    400026: ScientistDroid_FingerB2Right
+    400028: ScientistDroid_FingerC1
+    400030: ScientistDroid_FingerC1Right
+    400032: ScientistDroid_FingerC2
+    400034: ScientistDroid_FingerC2Right
+    400036: ScientistDroid_FootLeft
+    400038: ScientistDroid_FootRight
+    400040: ScientistDroid_ForearmLeft
+    400042: ScientistDroid_ForearmRight
+    400044: ScientistDroid_HandLeft
+    400046: ScientistDroid_HandRight
+    400048: ScientistDroid_Head
+    400050: ScientistDroid_HipLeft
+    400052: ScientistDroid_HipRight
+    400054: ScientistDroid_Neck1
+    400056: ScientistDroid_Neck2
+    400058: ScientistDroid_Pelvis
+    400060: ScientistDroid_Scopes
+    400062: ScientistDroid_Spine
+    400064: ScientistDroid_ThighLeft
+    400066: ScientistDroid_ThighRight
+    400068: ScientistDroid_ToeLeft
+    400070: ScientistDroid_ToeRight
+    400072: ScientistDroid_Torso
+    400074: ScientistDroid_UpperArmLeft
+    400076: ScientistDroid_UpperArmRight
+    400078: ScientistDroid_WristLeft
+    400080: ScientistDroid_WristRight
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: root
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 7977192707ab7244083cd700a9051b32,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

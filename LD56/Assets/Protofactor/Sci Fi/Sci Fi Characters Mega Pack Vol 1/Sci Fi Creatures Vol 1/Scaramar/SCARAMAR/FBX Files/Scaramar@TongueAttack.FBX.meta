@@ -1,0 +1,308 @@
+fileFormatVersion: 2
+guid: 7635c5a42ae4f164086f10bb881acf7b
+timeCreated: 1548206293
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: root
+    100002: //RootNode
+    100004: Scaramar_Body
+    100006: Scaramar_FinLeft_1
+    100008: Scaramar_FinLeft_2
+    100010: Scaramar_FinLeft_3
+    100012: Scaramar_FinLeft_4
+    100014: Scaramar_FinLeft_5
+    100016: Scaramar_FinMiddle
+    100018: Scaramar_FinRight_1
+    100020: Scaramar_FinRight_2
+    100022: Scaramar_FinRight_3
+    100024: Scaramar_FinRight_4
+    100026: Scaramar_FinRight_5
+    100028: Scaramar_Jaw
+    100030: Scaramar_LegFrontLeft_1
+    100032: Scaramar_LegFrontLeft_2
+    100034: Scaramar_LegFrontLeft_3
+    100036: Scaramar_LegFrontLeft_4
+    100038: Scaramar_LegFrontLeft_5
+    100040: Scaramar_LegFrontRight_1
+    100042: Scaramar_LegFrontRight_2
+    100044: Scaramar_LegFrontRight_3
+    100046: Scaramar_LegFrontRight_4
+    100048: Scaramar_LegFrontRight_5
+    100050: Scaramar_LegMiddleRight_1
+    100052: Scaramar_LegMiddleRight_2
+    100054: Scaramar_LegMiddleRight_3
+    100056: Scaramar_LegMiddleRight_4
+    100058: Scaramar_LegMiddleRight_5
+    100060: Scaramar_LegMiddletLeft_1
+    100062: Scaramar_LegMiddletLeft_2
+    100064: Scaramar_LegMiddletLeft_3
+    100066: Scaramar_LegMiddletLeft_4
+    100068: Scaramar_LegMiddletLeft_5
+    100070: Scaramar_LegRearLeft_1
+    100072: Scaramar_LegRearLeft_2
+    100074: Scaramar_LegRearLeft_3
+    100076: Scaramar_LegRearLeft_4
+    100078: Scaramar_LegRearLeft_5
+    100080: Scaramar_LegRearRight_1
+    100082: Scaramar_LegRearRight_2
+    100084: Scaramar_LegRearRight_3
+    100086: Scaramar_LegRearRight_4
+    100088: Scaramar_LegRearRight_5
+    100090: Scaramar_Tongue_1
+    100092: Scaramar_Tongue_2
+    100094: Scaramar_Tongue_3
+    100096: Scaramar_Tongue_4
+    100098: Scaramar_Tongue_5
+    400000: root
+    400002: //RootNode
+    400004: Scaramar_Body
+    400006: Scaramar_FinLeft_1
+    400008: Scaramar_FinLeft_2
+    400010: Scaramar_FinLeft_3
+    400012: Scaramar_FinLeft_4
+    400014: Scaramar_FinLeft_5
+    400016: Scaramar_FinMiddle
+    400018: Scaramar_FinRight_1
+    400020: Scaramar_FinRight_2
+    400022: Scaramar_FinRight_3
+    400024: Scaramar_FinRight_4
+    400026: Scaramar_FinRight_5
+    400028: Scaramar_Jaw
+    400030: Scaramar_LegFrontLeft_1
+    400032: Scaramar_LegFrontLeft_2
+    400034: Scaramar_LegFrontLeft_3
+    400036: Scaramar_LegFrontLeft_4
+    400038: Scaramar_LegFrontLeft_5
+    400040: Scaramar_LegFrontRight_1
+    400042: Scaramar_LegFrontRight_2
+    400044: Scaramar_LegFrontRight_3
+    400046: Scaramar_LegFrontRight_4
+    400048: Scaramar_LegFrontRight_5
+    400050: Scaramar_LegMiddleRight_1
+    400052: Scaramar_LegMiddleRight_2
+    400054: Scaramar_LegMiddleRight_3
+    400056: Scaramar_LegMiddleRight_4
+    400058: Scaramar_LegMiddleRight_5
+    400060: Scaramar_LegMiddletLeft_1
+    400062: Scaramar_LegMiddletLeft_2
+    400064: Scaramar_LegMiddletLeft_3
+    400066: Scaramar_LegMiddletLeft_4
+    400068: Scaramar_LegMiddletLeft_5
+    400070: Scaramar_LegRearLeft_1
+    400072: Scaramar_LegRearLeft_2
+    400074: Scaramar_LegRearLeft_3
+    400076: Scaramar_LegRearLeft_4
+    400078: Scaramar_LegRearLeft_5
+    400080: Scaramar_LegRearRight_1
+    400082: Scaramar_LegRearRight_2
+    400084: Scaramar_LegRearRight_3
+    400086: Scaramar_LegRearRight_4
+    400088: Scaramar_LegRearRight_5
+    400090: Scaramar_Tongue_1
+    400092: Scaramar_Tongue_2
+    400094: Scaramar_Tongue_3
+    400096: Scaramar_Tongue_4
+    400098: Scaramar_Tongue_5
+    7400000: TongueAttack
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: TongueAttack
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Scaramar_Body
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinLeft_1
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinLeft_2
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinLeft_3
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinLeft_4
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinLeft_5
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinMiddle
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinRight_1
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinRight_2
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinRight_3
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinRight_4
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_FinRight_5
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_Jaw
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_Jaw/Scaramar_Tongue_1
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_Jaw/Scaramar_Tongue_1/Scaramar_Tongue_2
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_Jaw/Scaramar_Tongue_1/Scaramar_Tongue_2/Scaramar_Tongue_3
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_Jaw/Scaramar_Tongue_1/Scaramar_Tongue_2/Scaramar_Tongue_3/Scaramar_Tongue_4
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_Jaw/Scaramar_Tongue_1/Scaramar_Tongue_2/Scaramar_Tongue_3/Scaramar_Tongue_4/Scaramar_Tongue_5
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontLeft_1
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontLeft_1/Scaramar_LegFrontLeft_2
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontLeft_1/Scaramar_LegFrontLeft_2/Scaramar_LegFrontLeft_3
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontLeft_1/Scaramar_LegFrontLeft_2/Scaramar_LegFrontLeft_3/Scaramar_LegFrontLeft_4
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontLeft_1/Scaramar_LegFrontLeft_2/Scaramar_LegFrontLeft_3/Scaramar_LegFrontLeft_4/Scaramar_LegFrontLeft_5
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontRight_1
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontRight_1/Scaramar_LegFrontRight_2
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontRight_1/Scaramar_LegFrontRight_2/Scaramar_LegFrontRight_3
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontRight_1/Scaramar_LegFrontRight_2/Scaramar_LegFrontRight_3/Scaramar_LegFrontRight_4
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegFrontRight_1/Scaramar_LegFrontRight_2/Scaramar_LegFrontRight_3/Scaramar_LegFrontRight_4/Scaramar_LegFrontRight_5
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddleRight_1
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddleRight_1/Scaramar_LegMiddleRight_2
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddleRight_1/Scaramar_LegMiddleRight_2/Scaramar_LegMiddleRight_3
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddleRight_1/Scaramar_LegMiddleRight_2/Scaramar_LegMiddleRight_3/Scaramar_LegMiddleRight_4
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddleRight_1/Scaramar_LegMiddleRight_2/Scaramar_LegMiddleRight_3/Scaramar_LegMiddleRight_4/Scaramar_LegMiddleRight_5
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddletLeft_1
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddletLeft_1/Scaramar_LegMiddletLeft_2
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddletLeft_1/Scaramar_LegMiddletLeft_2/Scaramar_LegMiddletLeft_3
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddletLeft_1/Scaramar_LegMiddletLeft_2/Scaramar_LegMiddletLeft_3/Scaramar_LegMiddletLeft_4
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegMiddletLeft_1/Scaramar_LegMiddletLeft_2/Scaramar_LegMiddletLeft_3/Scaramar_LegMiddletLeft_4/Scaramar_LegMiddletLeft_5
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearLeft_1
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearLeft_1/Scaramar_LegRearLeft_2
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearLeft_1/Scaramar_LegRearLeft_2/Scaramar_LegRearLeft_3
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearLeft_1/Scaramar_LegRearLeft_2/Scaramar_LegRearLeft_3/Scaramar_LegRearLeft_4
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearLeft_1/Scaramar_LegRearLeft_2/Scaramar_LegRearLeft_3/Scaramar_LegRearLeft_4/Scaramar_LegRearLeft_5
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearRight_1
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearRight_1/Scaramar_LegRearRight_2
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearRight_1/Scaramar_LegRearRight_2/Scaramar_LegRearRight_3
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearRight_1/Scaramar_LegRearRight_2/Scaramar_LegRearRight_3/Scaramar_LegRearRight_4
+        weight: 1
+      - path: root/Scaramar_Body/Scaramar_LegRearRight_1/Scaramar_LegRearRight_2/Scaramar_LegRearRight_3/Scaramar_LegRearRight_4/Scaramar_LegRearRight_5
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: root
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 47de04c070cf9f74fa37bb851754fdef,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
