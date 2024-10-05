@@ -9,30 +9,40 @@ public class FirstPersonPlayerController : MonoBehaviour
     private Transform m_CameraTransform;
 
     [SerializeField]
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 2.0f; // Speed of the player
     [SerializeField]
-    private float sprintSpeed = 4.0f;
+    private float sprintSpeed = 4.0f; // Speed when sprinting
     [SerializeField]
-    private float crouchSpeed = 1.0f;
+    private float crouchSpeed = 1.0f; // Speed when crouching
     [SerializeField]
-    private float jumpHeight = 1.0f;
+    private float _currentSpeed; // Current speed of the player
     [SerializeField]
-    private float gravityValue = -9.81f;
+    private float jumpHeight = 1.0f; // Height of the jump
+    [SerializeField]
+    private float dashSpeed = 10.0f; // Speed during dash
+    [SerializeField]
+    private float dashDuration = 0.2f; // Duration of the dash
+    [SerializeField]
+    private float gravityValue = -9.81f; // Gravity value
 
     // New fields for ground detection
     [SerializeField]
-    private Transform groundCheck;
+    private Transform groundCheck; // Transform to check if the player is grounded
     [SerializeField]
-    private float groundDistance = 0.1f;
+    private float groundDistance = 0.1f; // Distance to the ground
     [SerializeField]
-    private LayerMask groundMask;
+    private LayerMask groundMask; // Mask to determine what is ground
 
-    private bool _isGrounded;
+    private bool _isGrounded; // Boolean to store whether the player is grounded or not
     // Fields for Double Jump
-    private int _jumpCount = 0;
-    private const int MaxJumpCount = 2;
+    private int _jumpCount = 0; // Number of jumps performed
+    private const int MaxJumpCount = 2; // Maximum number of jumps allowed
     // Fields for Crouching
-    private bool _isCrouching = false;
+    private bool _isCrouching = false; // Boolean to store whether the player is crouching or not
+    // Fields for Dashing
+    private bool _canDash = true; // Boolean to store whether the player can dash or not
+    private bool _isDashing = false; // Boolean to store whether the player is dashing or not
+    private float _dashTime; // Time remaining for the dash
 
     void Start()
     {
@@ -43,6 +53,8 @@ public class FirstPersonPlayerController : MonoBehaviour
         // Lock the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        _currentSpeed = playerSpeed; // Set the current speed to the player speed
     }
 
 
@@ -55,31 +67,60 @@ public class FirstPersonPlayerController : MonoBehaviour
         {
             m_PlayerVelocity.y = -0.1f;
             _jumpCount = 0;
+            _canDash = true; // Reset dash ability when grounded
         }
 
         Vector2 movement = m_InputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
         move = m_CameraTransform.forward * move.z + m_CameraTransform.right * move.x;
 
-        // Handle sprinting and crouching
-        if (Input.GetKey(KeyCode.LeftShift))
+        // Handle sprinting and crouching only if grounded
+        if (_isGrounded) // Newly added condition
         {
-            _isCrouching = false;
-            m_CharacterController.height = 2.0f; // Reset height if previously crouched
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _isCrouching = false;
+                m_CharacterController.height = 2.0f; // Reset height if previously crouched
+                _currentSpeed = sprintSpeed; // Newly added assignment
+            }
+            else if (Input.GetKey(KeyCode.LeftControl))
+            {
+                _isCrouching = true;
+                m_CharacterController.height = 1.0f; // Reduce height for crouching
+                _currentSpeed = crouchSpeed; // Newly added assignment
+            }
+            else
+            {
+                _isCrouching = false;
+                m_CharacterController.height = 2.0f; // Reset height if previously crouched
+                _currentSpeed = playerSpeed; // Newly added assignment
+            }
         }
-        else if (Input.GetKey(KeyCode.LeftControl))
+
+        // Handle dashing
+        if (Input.GetKeyDown(KeyCode.E) && !_isGrounded && _canDash)
         {
-            _isCrouching = true;
-            m_CharacterController.height = 1.0f; // Reduce height for crouching
+            _isDashing = true;
+            _dashTime = dashDuration;
+            _canDash = false;
+        }
+
+        if (_isDashing)
+        {
+            if (_dashTime > 0)
+            {
+                m_CharacterController.Move(move * (Time.deltaTime * dashSpeed));
+                _dashTime -= Time.deltaTime;
+            }
+            else
+            {
+                _isDashing = false;
+            }
         }
         else
         {
-            _isCrouching = false;
-            m_CharacterController.height = 2.0f; // Reset height if previously crouched
+            m_CharacterController.Move(move * (Time.deltaTime * _currentSpeed)); // Modified to use _currentSpeed
         }
-
-        float currentSpeed = _isCrouching ? crouchSpeed : (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : playerSpeed);
-        m_CharacterController.Move(move * (Time.deltaTime * currentSpeed));
 
         // Handle jumping
         if (m_InputManager.PlayerJumpedThisFrame() && _jumpCount < MaxJumpCount)
