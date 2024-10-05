@@ -23,8 +23,6 @@ public class FirstPersonPlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask groundMask;
 
-    public AnimationCurve stinkcurve;
-
     private bool _isGrounded;
 
     void Start()
@@ -32,7 +30,12 @@ public class FirstPersonPlayerController : MonoBehaviour
         m_CharacterController = GetComponent<CharacterController>();
         m_InputManager = InputManager.Instance;
         if (Camera.main != null) m_CameraTransform = Camera.main.transform;
+
+        // Lock the cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
+
 
     void Update()
     {
