@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: 87a3da849c21c9841aa92054abaf3276
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Gryllunguis_
+    100002: Gryllunguis_ Head
+    100004: Gryllunguis_ L Calf
+    100006: Gryllunguis_ L Clavicle
+    100008: Gryllunguis_ L Finger0
+    100010: Gryllunguis_ L Foot
+    100012: Gryllunguis_ L Forearm
+    100014: Gryllunguis_ L Hand
+    100016: Gryllunguis_ L HorseLink
+    100018: Gryllunguis_ L Thigh
+    100020: Gryllunguis_ L Toe0
+    100022: Gryllunguis_ L Toe01
+    100024: Gryllunguis_ L Toe02
+    100026: Gryllunguis_ L UpperArm
+    100028: Gryllunguis_ Neck
+    100030: Gryllunguis_ Pelvis
+    100032: Gryllunguis_ Ponytail1
+    100034: Gryllunguis_ Ponytail11
+    100036: Gryllunguis_ Ponytail12
+    100038: Gryllunguis_ Ponytail13
+    100040: Gryllunguis_ Ponytail14
+    100042: Gryllunguis_ Ponytail2
+    100044: Gryllunguis_ Ponytail21
+    100046: Gryllunguis_ Ponytail22
+    100048: Gryllunguis_ Ponytail23
+    100050: Gryllunguis_ Ponytail24
+    100052: Gryllunguis_ R Calf
+    100054: Gryllunguis_ R Clavicle
+    100056: Gryllunguis_ R Finger0
+    100058: Gryllunguis_ R Foot
+    100060: Gryllunguis_ R Forearm
+    100062: Gryllunguis_ R Hand
+    100064: Gryllunguis_ R HorseLink
+    100066: Gryllunguis_ R Thigh
+    100068: Gryllunguis_ R Toe0
+    100070: Gryllunguis_ R Toe01
+    100072: Gryllunguis_ R Toe02
+    100074: Gryllunguis_ R UpperArm
+    100076: Gryllunguis_ Spine
+    100078: Gryllunguis_ Spine1
+    100080: Gryllunguis_Jaw
+    100082: Gryllunguis_LeftForearm2
+    100084: Gryllunguis_Lefthand2
+    100086: Gryllunguis_LeftUpperArm2
+    100088: Gryllunguis_LungLeft
+    100090: Gryllunguis_LungRight
+    100092: Gryllunguis_RightForearm2
+    100094: Gryllunguis_RightHand
+    100096: Gryllunguis_RightUpperArm2
+    100098: root
+    100100: //RootNode
+    100102: SK_Gryllunguis
+    400000: Gryllunguis_
+    400002: Gryllunguis_ Head
+    400004: Gryllunguis_ L Calf
+    400006: Gryllunguis_ L Clavicle
+    400008: Gryllunguis_ L Finger0
+    400010: Gryllunguis_ L Foot
+    400012: Gryllunguis_ L Forearm
+    400014: Gryllunguis_ L Hand
+    400016: Gryllunguis_ L HorseLink
+    400018: Gryllunguis_ L Thigh
+    400020: Gryllunguis_ L Toe0
+    400022: Gryllunguis_ L Toe01
+    400024: Gryllunguis_ L Toe02
+    400026: Gryllunguis_ L UpperArm
+    400028: Gryllunguis_ Neck
+    400030: Gryllunguis_ Pelvis
+    400032: Gryllunguis_ Ponytail1
+    400034: Gryllunguis_ Ponytail11
+    400036: Gryllunguis_ Ponytail12
+    400038: Gryllunguis_ Ponytail13
+    400040: Gryllunguis_ Ponytail14
+    400042: Gryllunguis_ Ponytail2
+    400044: Gryllunguis_ Ponytail21
+    400046: Gryllunguis_ Ponytail22
+    400048: Gryllunguis_ Ponytail23
+    400050: Gryllunguis_ Ponytail24
+    400052: Gryllunguis_ R Calf
+    400054: Gryllunguis_ R Clavicle
+    400056: Gryllunguis_ R Finger0
+    400058: Gryllunguis_ R Foot
+    400060: Gryllunguis_ R Forearm
+    400062: Gryllunguis_ R Hand
+    400064: Gryllunguis_ R HorseLink
+    400066: Gryllunguis_ R Thigh
+    400068: Gryllunguis_ R Toe0
+    400070: Gryllunguis_ R Toe01
+    400072: Gryllunguis_ R Toe02
+    400074: Gryllunguis_ R UpperArm
+    400076: Gryllunguis_ Spine
+    400078: Gryllunguis_ Spine1
+    400080: Gryllunguis_Jaw
+    400082: Gryllunguis_LeftForearm2
+    400084: Gryllunguis_Lefthand2
+    400086: Gryllunguis_LeftUpperArm2
+    400088: Gryllunguis_LungLeft
+    400090: Gryllunguis_LungRight
+    400092: Gryllunguis_RightForearm2
+    400094: Gryllunguis_RightHand
+    400096: Gryllunguis_RightUpperArm2
+    400098: root
+    400100: SK_Gryllunguis
+    400102: //RootNode
+    2100000: M_Gryllunguis
+    4300000: SK_Gryllunguis
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: SK_Gryllunguis
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: root
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

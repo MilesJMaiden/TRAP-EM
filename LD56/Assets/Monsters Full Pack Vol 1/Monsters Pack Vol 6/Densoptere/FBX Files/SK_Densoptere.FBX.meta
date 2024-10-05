@@ -1,0 +1,217 @@
+fileFormatVersion: 2
+guid: 301df9fbf4a5521448ef0a59f4174026
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Densoptere_
+    100002: Densoptere_ Head
+    100004: Densoptere_ L Calf
+    100006: Densoptere_ L Clavicle
+    100008: Densoptere_ L Finger0
+    100010: Densoptere_ L Finger01
+    100012: Densoptere_ L Finger02
+    100014: Densoptere_ L Finger1
+    100016: Densoptere_ L Finger11
+    100018: Densoptere_ L Finger12
+    100020: Densoptere_ L Foot
+    100022: Densoptere_ L Forearm
+    100024: Densoptere_ L Hand
+    100026: Densoptere_ L Thigh
+    100028: Densoptere_ L Toe0
+    100030: Densoptere_ L Toe01
+    100032: Densoptere_ L Toe02
+    100034: Densoptere_ L Toe1
+    100036: Densoptere_ L Toe11
+    100038: Densoptere_ L Toe12
+    100040: Densoptere_ L UpperArm
+    100042: Densoptere_ Neck
+    100044: Densoptere_ Pelvis
+    100046: Densoptere_ Ponytail1
+    100048: Densoptere_ Ponytail11
+    100050: Densoptere_ Ponytail12
+    100052: Densoptere_ Ponytail2
+    100054: Densoptere_ Ponytail21
+    100056: Densoptere_ Ponytail22
+    100058: Densoptere_ R Calf
+    100060: Densoptere_ R Clavicle
+    100062: Densoptere_ R Finger0
+    100064: Densoptere_ R Finger01
+    100066: Densoptere_ R Finger02
+    100068: Densoptere_ R Finger1
+    100070: Densoptere_ R Finger11
+    100072: Densoptere_ R Finger12
+    100074: Densoptere_ R Foot
+    100076: Densoptere_ R Forearm
+    100078: Densoptere_ R Hand
+    100080: Densoptere_ R Thigh
+    100082: Densoptere_ R Toe0
+    100084: Densoptere_ R Toe01
+    100086: Densoptere_ R Toe02
+    100088: Densoptere_ R Toe1
+    100090: Densoptere_ R Toe11
+    100092: Densoptere_ R Toe12
+    100094: Densoptere_ R UpperArm
+    100096: Densoptere_ Spine
+    100098: Densoptere_ Spine1
+    100100: Densoptere_ Tail
+    100102: Densoptere_ Tail1
+    100104: Densoptere_ Tail2
+    100106: Densoptere_ Tail3
+    100108: Densoptere_Jaw
+    100110: root
+    100112: //RootNode
+    100114: SK_Densoptere
+    400000: Densoptere_
+    400002: Densoptere_ Head
+    400004: Densoptere_ L Calf
+    400006: Densoptere_ L Clavicle
+    400008: Densoptere_ L Finger0
+    400010: Densoptere_ L Finger01
+    400012: Densoptere_ L Finger02
+    400014: Densoptere_ L Finger1
+    400016: Densoptere_ L Finger11
+    400018: Densoptere_ L Finger12
+    400020: Densoptere_ L Foot
+    400022: Densoptere_ L Forearm
+    400024: Densoptere_ L Hand
+    400026: Densoptere_ L Thigh
+    400028: Densoptere_ L Toe0
+    400030: Densoptere_ L Toe01
+    400032: Densoptere_ L Toe02
+    400034: Densoptere_ L Toe1
+    400036: Densoptere_ L Toe11
+    400038: Densoptere_ L Toe12
+    400040: Densoptere_ L UpperArm
+    400042: Densoptere_ Neck
+    400044: Densoptere_ Pelvis
+    400046: Densoptere_ Ponytail1
+    400048: Densoptere_ Ponytail11
+    400050: Densoptere_ Ponytail12
+    400052: Densoptere_ Ponytail2
+    400054: Densoptere_ Ponytail21
+    400056: Densoptere_ Ponytail22
+    400058: Densoptere_ R Calf
+    400060: Densoptere_ R Clavicle
+    400062: Densoptere_ R Finger0
+    400064: Densoptere_ R Finger01
+    400066: Densoptere_ R Finger02
+    400068: Densoptere_ R Finger1
+    400070: Densoptere_ R Finger11
+    400072: Densoptere_ R Finger12
+    400074: Densoptere_ R Foot
+    400076: Densoptere_ R Forearm
+    400078: Densoptere_ R Hand
+    400080: Densoptere_ R Thigh
+    400082: Densoptere_ R Toe0
+    400084: Densoptere_ R Toe01
+    400086: Densoptere_ R Toe02
+    400088: Densoptere_ R Toe1
+    400090: Densoptere_ R Toe11
+    400092: Densoptere_ R Toe12
+    400094: Densoptere_ R UpperArm
+    400096: Densoptere_ Spine
+    400098: Densoptere_ Spine1
+    400100: Densoptere_ Tail
+    400102: Densoptere_ Tail1
+    400104: Densoptere_ Tail2
+    400106: Densoptere_ Tail3
+    400108: Densoptere_Jaw
+    400110: root
+    400112: //RootNode
+    400114: SK_Densoptere
+    2100000: M_Densoptere
+    4300000: SK_Densoptere
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: SK_Densoptere
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Densoptere
+    second: {fileID: 2100000, guid: 197f0aeaac1535b4faef032377337721, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: root
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
