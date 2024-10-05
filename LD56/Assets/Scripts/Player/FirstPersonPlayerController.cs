@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonPlayerController : MonoBehaviour
@@ -56,10 +57,13 @@ public class FirstPersonPlayerController : MonoBehaviour
     private bool _isGrappling = false; // Boolean to store whether the player is currently grappling
     private Vector3 _grapplePoint; // Point to grapple to
     private float _grappleCooldownTime; // Time remaining for the grapple cooldown
-
     // Reference to the GameObject containing the LineRenderer
     [SerializeField]
     private GameObject grappleLineObject;
+    // Reference to the Grapple Cooldown Slider
+    [SerializeField]
+    private Slider grappleCooldownSlider;
+
 
     void Start()
     {
@@ -90,6 +94,17 @@ public class FirstPersonPlayerController : MonoBehaviour
         }
 
         _currentSpeed = playerSpeed; // Set the current speed to the player speed
+
+        // Initialize Grapple Cooldown Slider
+        if (grappleCooldownSlider != null)
+        {
+            grappleCooldownSlider.maxValue = grappleCooldown;
+            grappleCooldownSlider.value = grappleCooldown;
+        }
+        else
+        {
+            Debug.LogError("GrappleCooldownSlider is not assigned in the Inspector.");
+        }
     }
 
     void Update()
@@ -179,6 +194,12 @@ public class FirstPersonPlayerController : MonoBehaviour
                 _canGrapple = false;
                 _grappleCooldownTime = grappleCooldown;
                 m_LineRenderer.enabled = true; // Enable the line renderer
+
+                // Start the grapple cooldown
+                if (grappleCooldownSlider != null)
+                {
+                    grappleCooldownSlider.value = grappleCooldown;
+                }
             }
         }
 
@@ -218,9 +239,18 @@ public class FirstPersonPlayerController : MonoBehaviour
         if (!_canGrapple)
         {
             _grappleCooldownTime -= Time.deltaTime;
+            if (grappleCooldownSlider != null)
+            {
+                grappleCooldownSlider.value = _grappleCooldownTime;
+            }
+
             if (_grappleCooldownTime <= 0)
             {
                 _canGrapple = true;
+                if (grappleCooldownSlider != null)
+                {
+                    grappleCooldownSlider.value = grappleCooldown;
+                }
             }
         }
 
