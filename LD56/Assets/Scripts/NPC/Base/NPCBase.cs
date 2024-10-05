@@ -1,6 +1,6 @@
-using UnityEngine;
-using UnityEngine.AI;
 using System.Collections.Generic;
+using UnityEngine.AI;
+using UnityEngine;
 
 public abstract class NPCBase : MonoBehaviour
 {
@@ -14,6 +14,9 @@ public abstract class NPCBase : MonoBehaviour
     // Reference to the NavMeshAgent and detection collider
     protected internal NavMeshAgent agent;
     public Collider detectionCollider;
+
+    // Reference to the player's Transform
+    public Transform playerTransform;
 
     protected NPCState currentState;
 
@@ -45,10 +48,14 @@ public abstract class NPCBase : MonoBehaviour
 
     public void TransitionToFlee()
     {
-        if (!isAlert)
+        if (!isAlert && playerTransform != null) // Make sure playerTransform is assigned
         {
             isAlert = true;
-            SetState(new FleeState(this));
+            SetState(new FleeState(this, playerTransform)); // Pass playerTransform to FleeState
+        }
+        else
+        {
+            Debug.LogWarning("Player transform is not assigned.");
         }
     }
 
@@ -59,6 +66,7 @@ public abstract class NPCBase : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player detected! Switching to FleeState.");
+            playerTransform = other.transform; // Assign the player's transform
             TransitionToFlee();
         }
     }
