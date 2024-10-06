@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 2813238879611637106}
   m_Layer: 0
   m_Name: Goblin Prefab
-  m_TagString: NPCB
+  m_TagString: NPCA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,7 +516,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isAlert: 0
-  detectionCollider: {fileID: 2604266724974035391}
   playerTransform: {fileID: 0}
 --- !u!54 &2813238879611637106
 Rigidbody:

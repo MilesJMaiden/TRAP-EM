@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     // Fields to store the counts of the three unique NPCs
-    private int npcACount;
-    private int npcBCount;
-    private int npcCCount;
+    public int npcACount;
+    public int npcBCount;
+    public int npcCCount;
     private int ReleasedNPCA;
     private int ReleasedNPCB;
     private int ReleasedNPCC;
@@ -27,6 +28,21 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject ConsoleCNPC2;
     [SerializeField] private GameObject ConsoleCNPC3;
 
+    [Header("Console A Icons")]
+    [SerializeField] private GameObject ConsoleAIcon1;
+    [SerializeField] private GameObject ConsoleAIcon2;
+    [SerializeField] private GameObject ConsoleAIcon3;
+
+    [Header("Console B Icons")]
+    [SerializeField] private GameObject ConsoleBIcon1;
+    [SerializeField] private GameObject ConsoleBIcon2;
+    [SerializeField] private GameObject ConsoleBIcon3;
+
+    [Header("Console C Icons")]
+    [SerializeField] private GameObject ConsoleCIcon1;
+    [SerializeField] private GameObject ConsoleCIcon2;
+    [SerializeField] private GameObject ConsoleCIcon3;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +60,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Method to capture an NPC
@@ -54,6 +70,7 @@ public class Inventory : MonoBehaviour
         {
             case 1:
                 npcACount++;
+                Debug.Log("NPC A captured");
                 break;
             case 2:
                 npcBCount++;
@@ -68,29 +85,32 @@ public class Inventory : MonoBehaviour
     }
 
     // Method to release an NPC and activate the sleeper agents
-    private void ReleaseNPCA()
+    public void ReleaseNPCA()
     {
         //  logic to release NPCA
         if (npcACount > 0)
         {
             npcACount--;
-            switch (ReleasedNPCA) 
+            switch (ReleasedNPCA)
             {
-                case 1:
+                case 0:
                     {
                         ConsoleANPC1.SetActive(true);
+                        SetImageColor(ConsoleAIcon1, Color.green);
+                        ReleasedNPCA++;
+                        break;
+                    }
+                case 1:
+                    {
+                        ConsoleANPC2.SetActive(true);
+                        SetImageColor(ConsoleAIcon2, Color.green);
                         ReleasedNPCA++;
                         break;
                     }
                 case 2:
                     {
-                        ConsoleANPC2.SetActive(true);
-                        ReleasedNPCA++;
-                        break;
-                    }
-                case 3:
-                    {
                         ConsoleANPC3.SetActive(true);
+                        SetImageColor(ConsoleAIcon3, Color.green);
                         ReleasedNPCA++;
                         break;
                     }
@@ -99,7 +119,7 @@ public class Inventory : MonoBehaviour
                         Debug.LogWarning("Invalid NPCA Value");
                         break;
                     }
-            }  
+            }
         }
         else
         {
@@ -108,7 +128,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Method to release an NPC and activate the sleeper agents
-    private void ReleaseNPCB()
+    public void ReleaseNPCB()
     {
         //  logic to release NPCB
         if (npcBCount > 0)
@@ -118,14 +138,17 @@ public class Inventory : MonoBehaviour
             {
                 case 0:
                     ConsoleBNPC1.SetActive(true);
+                    SetImageColor(ConsoleBIcon1, Color.green);
                     ReleasedNPCB++;
                     break;
                 case 1:
                     ConsoleBNPC2.SetActive(true);
+                    SetImageColor(ConsoleBIcon2, Color.green);
                     ReleasedNPCB++;
                     break;
                 case 2:
                     ConsoleBNPC3.SetActive(true);
+                    SetImageColor(ConsoleBIcon3, Color.green);
                     ReleasedNPCB++;
                     break;
                 default:
@@ -140,7 +163,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Method to release an NPC and activate the sleeper agents
-    private void ReleaseNPCC()
+    public void ReleaseNPCC()
     {
         //  logic to release NPCC
         if (npcCCount > 0)
@@ -150,14 +173,17 @@ public class Inventory : MonoBehaviour
             {
                 case 0:
                     ConsoleCNPC1.SetActive(true);
+                    SetImageColor(ConsoleCIcon1, Color.green);
                     ReleasedNPCC++;
                     break;
                 case 1:
                     ConsoleCNPC2.SetActive(true);
+                    SetImageColor(ConsoleCIcon2, Color.green);
                     ReleasedNPCC++;
                     break;
                 case 2:
                     ConsoleCNPC3.SetActive(true);
+                    SetImageColor(ConsoleCIcon3, Color.green);
                     ReleasedNPCC++;
                     break;
                 default:
@@ -171,19 +197,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    // Helper method to set the color of the Image component
+    private void SetImageColor(GameObject icon, Color color)
     {
-        if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("ConsoleA"))
+        Image image = icon.GetComponent<Image>();
+        if (image != null)
         {
-            ReleaseNPCA();
+            Debug.Log("Setting color of " + icon.name + " to " + color);
+            image.color = color;
         }
-        if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("ConsoleB"))
+        else
         {
-            ReleaseNPCB();
-        }
-        if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("ConsoleC"))
-        {
-            ReleaseNPCC();
+            Debug.LogWarning("No Image component found on " + icon.name);
         }
     }
 

@@ -33,6 +33,13 @@ public class ButterflyNet : MonoBehaviour
             Debug.LogError("PlayerController is not assigned in the Inspector.");
         }
 
+        // Initialize the inventory
+        inventory = FindObjectOfType<Inventory>();
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory component not found in the scene.");
+        }
+
         // Initialize the rotations
         startRotation = Quaternion.identity;
         midRotation = Quaternion.identity;
@@ -105,6 +112,8 @@ public class ButterflyNet : MonoBehaviour
                     // Assuming the NPC type is determined by the tag or another property
                     int npcType = DetermineNPCType(other);
                     inventory.CaptureNPC(npcType);
+
+                    Debug.Log("Caught Types | NPCA: " + inventory.npcACount + " | NPCB: " + inventory.npcBCount + " | NPCC: " + inventory.npcCCount);
                 }
             }
             else
@@ -124,6 +133,7 @@ public class ButterflyNet : MonoBehaviour
         // Example logic to determine NPC type based on tag
         if (other.CompareTag("NPCA"))
         {
+            Debug.Log("NPCA Caught");
             return 1;
         }
         else if (other.CompareTag("NPCB"))
