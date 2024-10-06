@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ButterflyNet : MonoBehaviour
@@ -44,6 +45,8 @@ public class ButterflyNet : MonoBehaviour
         startRotation = Quaternion.identity;
         midRotation = Quaternion.identity;
         endRotation = Quaternion.identity;
+
+        StartCoroutine(FindInventory());
     }
 
     void Update()
@@ -149,5 +152,19 @@ public class ButterflyNet : MonoBehaviour
             Debug.LogWarning("Unknown NPC type");
             return 0; // Invalid type
         }
+    }
+
+    private IEnumerator FindInventory()
+    {
+        while (inventory == null)
+        {
+            inventory = FindObjectOfType<Inventory>();
+            if (inventory == null)
+            {
+                Debug.LogWarning("Inventory component not found. Retrying...");
+                yield return new WaitForSeconds(0.5f); // Wait for half a second before retrying
+            }
+        }
+        Debug.Log("Inventory component found.");
     }
 }

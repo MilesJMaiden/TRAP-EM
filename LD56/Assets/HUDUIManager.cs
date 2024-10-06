@@ -14,12 +14,12 @@ public class HUDUIManager : MonoBehaviour
     private Slider cooldownSlider;
 
     [SerializeField]
-    private int creaturesRemaining = 10;
-    [SerializeField]
     private float initialScore = 10000f;
     private float score;
     private float elapsedTime = 0f;
     private bool isMonitoringTime = false;
+
+    private Inventory inventory;
 
     void OnEnable()
     {
@@ -32,6 +32,7 @@ public class HUDUIManager : MonoBehaviour
     }
     void Start()
     {
+        inventory = FindObjectOfType<Inventory>();
         score = initialScore;
         StartMonitoringTime();
     }
@@ -45,10 +46,9 @@ public class HUDUIManager : MonoBehaviour
             UpdateHUD();
         }
 
-        if (creaturesRemaining == 0)
+        if (AllNPCsReleased())
         {
             StopMonitoringTime();
-            
             Debug.Log("Score: " + Mathf.Round(score));
         }
     }
@@ -73,7 +73,7 @@ public class HUDUIManager : MonoBehaviour
     private void CalculateScore()
     {
         // 1250 seconds is the maximum time allowed before the score decreases to 0
-        score = initialScore - (elapsedTime * 8);
+        score = initialScore - (elapsedTime * 16.6f);
     }
     private void HandleGrappleUsed()
     {
@@ -97,5 +97,10 @@ public class HUDUIManager : MonoBehaviour
     public void DisableHUD()
     {
         gameObject.SetActive(false);
+    }
+
+    private bool AllNPCsReleased()
+    {
+        return inventory.ReleasedNPCA == 3 && inventory.ReleasedNPCB == 3 && inventory.ReleasedNPCC == 3;
     }
 }
