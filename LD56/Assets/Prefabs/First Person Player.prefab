@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 6713804241586537825}
   m_Layer: 0
   m_Name: DetectionRadius
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -900,6 +900,10 @@ MonoBehaviour:
   dashDuration: 0.2
   dashCooldownSlider: {fileID: 0}
   CameraSource: {fileID: 4561085446342473321}
+  detectionCollider: {fileID: 6713804241586537825}
+  playerDetectionRadius: 3
+  sprintingDetectionRadius: 7
+  crouchingDetectionRadius: 1
 --- !u!1 &2854556654628922989
 GameObject:
   m_ObjectHideFlags: 0
