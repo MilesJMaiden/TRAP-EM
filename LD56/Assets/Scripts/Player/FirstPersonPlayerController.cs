@@ -86,9 +86,6 @@ public class FirstPersonPlayerController : MonoBehaviour
     private bool _isDashing = false;
     private float _dashTime;
     private float _dashCooldownTime;
-    // Fields for double-tap detection
-    private float _lastShiftTapTime = 0f;
-    private float _doubleTapTimeWindow = 0.3f; // Time window for double-tap detection
 
     #endregion
 
