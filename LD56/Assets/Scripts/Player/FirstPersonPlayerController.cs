@@ -310,8 +310,6 @@ public class FirstPersonPlayerController : MonoBehaviour
             else
             {
                 _isDashing = false;
-                
-
             }
         }
         else
