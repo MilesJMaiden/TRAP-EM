@@ -45,8 +45,6 @@ public class ButterflyNet : MonoBehaviour
         startRotation = Quaternion.identity;
         midRotation = Quaternion.identity;
         endRotation = Quaternion.identity;
-
-        StartCoroutine(FindInventory());
     }
 
     void Update()
@@ -102,22 +100,13 @@ public class ButterflyNet : MonoBehaviour
         Debug.Log("Collision detected with: " + other.name);
         if (isSwinging)
         {
-            Debug.Log("Swinging is true");
-            if (other.CompareTag("NPCA") || other.CompareTag("NPCB") || other.CompareTag("NPCC"))
+            int npcType = DetermineNPCType(other.tag);
+            if (npcType != 0)
             {
                 Debug.Log("Enemy hit with tag: " + other.tag);
-                // Destroy the enemy on hit
-                Destroy(other.gameObject);
-
-                // Use the Inventory component to capture the NPC
-                if (inventory != null)
-                {
-                    // Assuming the NPC type is determined by the tag or another property
-                    int npcType = DetermineNPCType(other);
-                    inventory.CaptureNPC(npcType);
-
-                    Debug.Log("Caught Types | NPCA: " + inventory.npcACount + " | NPCB: " + inventory.npcBCount + " | NPCC: " + inventory.npcCCount);
-                }
+                Destroy(other.gameObject); // Destroy the enemy on hit
+                inventory.CaptureNPC(npcType);
+                Debug.Log("Caught Types | NPCA: " + inventory.npcACount + " | NPCB: " + inventory.npcBCount + " | NPCC: " + inventory.npcCCount);  
             }
             else
             {
@@ -131,40 +120,18 @@ public class ButterflyNet : MonoBehaviour
     }
 
     // Method to determine the NPC type based on the collided object
-    private int DetermineNPCType(Collider other)
+    private int DetermineNPCType(string tag)
     {
-        // Example logic to determine NPC type based on tag
-        if (other.CompareTag("NPCA"))
+        switch(tag)
         {
-            Debug.Log("NPCA Caught");
-            return 1;
+            case "NPCA":
+                return 1;
+            case "NPCB":
+                return 2;
+            case "NPCC":
+                return 3;
+            default:
+                return 0;
         }
-        else if (other.CompareTag("NPCB"))
-        {
-            return 2;
-        }
-        else if (other.CompareTag("NPCC"))
-        {
-            return 3;
-        }
-        else
-        {
-            Debug.LogWarning("Unknown NPC type");
-            return 0; // Invalid type
-        }
-    }
-
-    private IEnumerator FindInventory()
-    {
-        while (inventory == null)
-        {
-            inventory = FindObjectOfType<Inventory>();
-            if (inventory == null)
-            {
-                Debug.LogWarning("Inventory component not found. Retrying...");
-                yield return new WaitForSeconds(0.5f); // Wait for half a second before retrying
-            }
-        }
-        Debug.Log("Inventory component found.");
     }
 }
