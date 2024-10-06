@@ -427,8 +427,8 @@ GameObject:
   - component: {fileID: 6359525625073012498}
   - component: {fileID: 2813238879611637106}
   m_Layer: 0
-  m_Name: Goblin Prefab
-  m_TagString: NPCA
+  m_Name: GoblinC
+  m_TagString: NPCC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

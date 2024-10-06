@@ -975,8 +975,8 @@ GameObject:
   - component: {fileID: 8876943418338912668}
   - component: {fileID: 7118860586175557133}
   m_Layer: 0
-  m_Name: GoblinVarientYellow Prefab
-  m_TagString: NPCC
+  m_Name: GoblinA
+  m_TagString: NPCA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1056,6 +1056,7 @@ MonoBehaviour:
   patrolSpeed: 3
   alertSpeed: 9
   patrolPoints:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1825,7 +1826,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4620
+  m_VersionIndex: 4626
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

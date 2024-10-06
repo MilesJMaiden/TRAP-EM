@@ -51,17 +51,27 @@ PrefabInstance:
     - target: {fileID: 1291222305525593196, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_Name
-      value: GoblinVarientRed Prefab (1)
+      value: GoblinB
       objectReference: {fileID: 0}
     - target: {fileID: 1291222305525593196, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998684818967117281, guid: d2d46826099a9434f92d0cbbfd08535d,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079895613963422662, guid: d2d46826099a9434f92d0cbbfd08535d,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 4638
       objectReference: {fileID: 0}
     - target: {fileID: 8480062030921025918, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6992248
+      value: -2.300775
       objectReference: {fileID: 0}
     - target: {fileID: 8480062030921025918, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
@@ -71,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 8480062030921025918, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.822176
+      value: -0.17782402
       objectReference: {fileID: 0}
     - target: {fileID: 8480062030921025918, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
@@ -130,7 +140,7 @@ PrefabInstance:
     - target: {fileID: 5823106950925356612, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8624835
+      value: 6.8624835
       objectReference: {fileID: 0}
     - target: {fileID: 5823106950925356612, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
@@ -140,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 5823106950925356612, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8452082
+      value: -0.15479279
       objectReference: {fileID: 0}
     - target: {fileID: 5823106950925356612, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
@@ -180,12 +190,22 @@ PrefabInstance:
     - target: {fileID: 6017155761020094147, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
       propertyPath: m_Name
-      value: GoblinVarientYellow Prefab
+      value: GoblinA
       objectReference: {fileID: 0}
     - target: {fileID: 6017155761020094147, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033255485041166175, guid: 1b4710b07001fc347b47af80b487229e,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 4647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876943418338912668, guid: 1b4710b07001fc347b47af80b487229e,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -209,17 +229,27 @@ PrefabInstance:
     - target: {fileID: 1291222305525593196, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_Name
-      value: GoblinVarientRed Prefab
+      value: GoblinB
       objectReference: {fileID: 0}
     - target: {fileID: 1291222305525593196, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998684818967117281, guid: d2d46826099a9434f92d0cbbfd08535d,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079895613963422662, guid: d2d46826099a9434f92d0cbbfd08535d,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 4638
       objectReference: {fileID: 0}
     - target: {fileID: 8480062030921025918, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.552975
+      value: 7.552975
       objectReference: {fileID: 0}
     - target: {fileID: 8480062030921025918, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
@@ -229,7 +259,7 @@ PrefabInstance:
     - target: {fileID: 8480062030921025918, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.0514498
+      value: 1.0514498
       objectReference: {fileID: 0}
     - target: {fileID: 8480062030921025918, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
@@ -288,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 390532837556084596, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.1023927
+      value: 4.1023927
       objectReference: {fileID: 0}
     - target: {fileID: 390532837556084596, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
@@ -338,12 +368,22 @@ PrefabInstance:
     - target: {fileID: 1687605718539766641, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
       propertyPath: m_Name
-      value: Goblin Prefab (1)
+      value: GoblinC
       objectReference: {fileID: 0}
     - target: {fileID: 1687605718539766641, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998954702861238563, guid: 3cabb5def7794264ab847850bc6febab,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 4617
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359525625073012498, guid: 3cabb5def7794264ab847850bc6febab,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -367,12 +407,22 @@ PrefabInstance:
     - target: {fileID: 1291222305525593196, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_Name
-      value: GoblinVarientRed Prefab (2)
+      value: GoblinB
       objectReference: {fileID: 0}
     - target: {fileID: 1291222305525593196, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998684818967117281, guid: d2d46826099a9434f92d0cbbfd08535d,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079895613963422662, guid: d2d46826099a9434f92d0cbbfd08535d,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 4638
       objectReference: {fileID: 0}
     - target: {fileID: 8480062030921025918, guid: d2d46826099a9434f92d0cbbfd08535d,
         type: 3}
@@ -496,12 +546,22 @@ PrefabInstance:
     - target: {fileID: 1687605718539766641, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
       propertyPath: m_Name
-      value: Goblin Prefab (3)
+      value: GoblinC
       objectReference: {fileID: 0}
     - target: {fileID: 1687605718539766641, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998954702861238563, guid: 3cabb5def7794264ab847850bc6febab,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 4617
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359525625073012498, guid: 3cabb5def7794264ab847850bc6febab,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -575,12 +635,22 @@ PrefabInstance:
     - target: {fileID: 1687605718539766641, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
       propertyPath: m_Name
-      value: Goblin Prefab (2)
+      value: GoblinC
       objectReference: {fileID: 0}
     - target: {fileID: 1687605718539766641, guid: 3cabb5def7794264ab847850bc6febab,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998954702861238563, guid: 3cabb5def7794264ab847850bc6febab,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 4617
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359525625073012498, guid: 3cabb5def7794264ab847850bc6febab,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -654,12 +724,22 @@ PrefabInstance:
     - target: {fileID: 6017155761020094147, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
       propertyPath: m_Name
-      value: GoblinVarientYellow Prefab (2)
+      value: GoblinA
       objectReference: {fileID: 0}
     - target: {fileID: 6017155761020094147, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033255485041166175, guid: 1b4710b07001fc347b47af80b487229e,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 4647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876943418338912668, guid: 1b4710b07001fc347b47af80b487229e,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -733,12 +813,22 @@ PrefabInstance:
     - target: {fileID: 6017155761020094147, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
       propertyPath: m_Name
-      value: GoblinVarientYellow Prefab (1)
+      value: GoblinA
       objectReference: {fileID: 0}
     - target: {fileID: 6017155761020094147, guid: 1b4710b07001fc347b47af80b487229e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033255485041166175, guid: 1b4710b07001fc347b47af80b487229e,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 4647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876943418338912668, guid: 1b4710b07001fc347b47af80b487229e,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

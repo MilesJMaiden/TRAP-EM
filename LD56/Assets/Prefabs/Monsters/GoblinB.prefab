@@ -320,8 +320,8 @@ GameObject:
   - component: {fileID: 2998684818967117281}
   - component: {fileID: 6938176958343878809}
   m_Layer: 0
-  m_Name: GoblinVarientRed Prefab
-  m_TagString: NPCC
+  m_Name: GoblinB
+  m_TagString: NPCB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,9 +398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d708a85c2d5b18648b20d80675ac218c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 1
-  alertSpeed: 5
+  patrolSpeed: 5
+  alertSpeed: 12
   patrolPoints:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1926,7 +1927,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4605
+  m_VersionIndex: 4617
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
