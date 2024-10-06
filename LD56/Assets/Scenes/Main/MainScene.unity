@@ -8527,7 +8527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1106883688}
   m_Layer: 0
-  m_Name: PatrolPoints
+  m_Name: TestPatrolPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12765,7 +12765,7 @@ PrefabInstance:
     - target: {fileID: 48993192770633734, guid: 731beb7ccdbad1a419f5da22044057bb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626845991568833586, guid: 731beb7ccdbad1a419f5da22044057bb,
         type: 3}
@@ -16864,8 +16864,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d708a85c2d5b18648b20d80675ac218c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 1
-  alertSpeed: 5
+  patrolSpeed: 12
+  alertSpeed: 22
   patrolPoints:
   - {fileID: 1654466408}
   - {fileID: 429896794}
@@ -19213,7 +19213,7 @@ PrefabInstance:
     - target: {fileID: 2386118408962863928, guid: 5e61dece678436e4facecfcda5125dbe,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1595
+      value: 1601
       objectReference: {fileID: 0}
     - target: {fileID: 2518237676821431121, guid: 5e61dece678436e4facecfcda5125dbe,
         type: 3}
@@ -19238,7 +19238,7 @@ PrefabInstance:
     - target: {fileID: 5046320407011528526, guid: 5e61dece678436e4facecfcda5125dbe,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4102
+      value: 4108
       objectReference: {fileID: 0}
     - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
         type: 3}
@@ -19995,6 +19995,7 @@ SceneRoots:
   - {fileID: 1645834029}
   - {fileID: 2044413954}
   - {fileID: 3986135444873706695}
+  - {fileID: 1603065105}
   - {fileID: 1213007639}
   - {fileID: 2128105076}
   - {fileID: 1059716578}
@@ -20013,6 +20014,5 @@ SceneRoots:
   - {fileID: 285539428}
   - {fileID: 2055408268}
   - {fileID: 7069829487417770425}
-  - {fileID: 1603065105}
   - {fileID: 1106883688}
   - {fileID: 5235361348494792108}
