@@ -6,7 +6,8 @@ public class ButterflyNet : MonoBehaviour
     private float swingDuration = 0.5f; // Duration of the swing
     [SerializeField]
     private Collider weaponCollider; // Collider of the weapon
-    
+    [SerializeField]
+    private FirstPersonPlayerController playerController;
 
     private bool isSwinging = false; // Boolean to check if the weapon is swinging
     private float swingTime = 0.0f; // Time elapsed during the swing
@@ -27,9 +28,15 @@ public class ButterflyNet : MonoBehaviour
             Debug.LogError("WeaponCollider is not assigned in the Inspector.");
         }
 
-        startRotation = Quaternion.Euler(0, 0, 0);
-        midRotation = Quaternion.Euler(0, 0, 20);
-        endRotation = Quaternion.Euler(0, -20, -120);
+        if (playerController == null)
+        {
+            Debug.LogError("PlayerController is not assigned in the Inspector.");
+        }
+
+        // Initialize the rotations
+        startRotation = Quaternion.identity;
+        midRotation = Quaternion.identity;
+        endRotation = Quaternion.identity;
     }
 
     void Update()
@@ -47,6 +54,7 @@ public class ButterflyNet : MonoBehaviour
             {
                 transform.rotation = Quaternion.Lerp(midRotation, endRotation, (t - 0.2f) / 0.8f);
             }
+
             if (swingTime >= swingDuration)
             {
                 EndSwing();
@@ -61,6 +69,14 @@ public class ButterflyNet : MonoBehaviour
             isSwinging = true;
             swingTime = 0.0f;
             weaponCollider.enabled = true; // Enable the collider during the swing
+
+            // Set the initial rotation based on the player's forward direction
+            Vector3 playerForward = playerController.transform.forward;
+            Vector3 playerRight = playerController.transform.right;
+
+            startRotation = Quaternion.LookRotation(playerForward) * Quaternion.Euler(0, 0, 0);
+            midRotation = Quaternion.LookRotation(playerForward) * Quaternion.Euler(80, 0, 0);
+            endRotation = Quaternion.LookRotation(playerForward) * Quaternion.Euler(220, 0, 0);
         }
     }
 
@@ -73,18 +89,32 @@ public class ButterflyNet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isSwinging && (other.CompareTag("NPCA") || other.CompareTag("NPCB") || other.CompareTag("NPCC")))
+        Debug.Log("Collision detected with: " + other.name);
+        if (isSwinging)
         {
-            // Destroy the enemy on hit
-            Destroy(other.gameObject);
-
-            // Use the Inventory component to capture the NPC
-            if (inventory != null)
+            Debug.Log("Swinging is true");
+            if (other.CompareTag("NPCA") || other.CompareTag("NPCB") || other.CompareTag("NPCC"))
             {
-                // Assuming the NPC type is determined by the tag or another property
-                int npcType = DetermineNPCType(other);
-                inventory.CaptureNPC(npcType);
+                Debug.Log("Enemy hit with tag: " + other.tag);
+                // Destroy the enemy on hit
+                Destroy(other.gameObject);
+
+                // Use the Inventory component to capture the NPC
+                if (inventory != null)
+                {
+                    // Assuming the NPC type is determined by the tag or another property
+                    int npcType = DetermineNPCType(other);
+                    inventory.CaptureNPC(npcType);
+                }
             }
+            else
+            {
+                Debug.Log("Collided with non-NPC object");
+            }
+        }
+        else
+        {
+            Debug.Log("Swinging is false");
         }
     }
 
