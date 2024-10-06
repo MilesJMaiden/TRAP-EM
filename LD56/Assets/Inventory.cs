@@ -8,9 +8,24 @@ public class Inventory : MonoBehaviour
     private int npcACount;
     private int npcBCount;
     private int npcCCount;
+    private int ReleasedNPCA;
+    private int ReleasedNPCB;
+    private int ReleasedNPCC;
 
-    // Reference to the hidden GameObject
-    public GameObject hiddenObject;
+    [Header("Console A NPCs")]
+    [SerializeField] private GameObject ConsoleANPC1;
+    [SerializeField] private GameObject ConsoleANPC2;
+    [SerializeField] private GameObject ConsoleANPC3;
+
+    [Header("Console B NPCs")]
+    [SerializeField] private GameObject ConsoleBNPC1;
+    [SerializeField] private GameObject ConsoleBNPC2;
+    [SerializeField] private GameObject ConsoleBNPC3;
+
+    [Header("Console C NPCs")]
+    [SerializeField] private GameObject ConsoleCNPC1;
+    [SerializeField] private GameObject ConsoleCNPC2;
+    [SerializeField] private GameObject ConsoleCNPC3;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +34,11 @@ public class Inventory : MonoBehaviour
         npcBCount = 0;
         npcCCount = 0;
 
-        if (hiddenObject != null)
-        {
-            hiddenObject.SetActive(false);
-        }
+        ReleasedNPCA = 0;
+        ReleasedNPCB = 0;
+        ReleasedNPCC = 0;
+
+        SetActiveStateForAllNPCs(false);
     }
 
     // Update is called once per frame
@@ -51,33 +67,70 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // Method to release an NPC and activate the hidden object
+    // Method to release an NPC and activate the sleeper agents
     private void ReleaseNPCA()
     {
-        // Example logic to deplete NPCA
+        //  logic to release NPCA
         if (npcACount > 0)
         {
             npcACount--;
-            if (hiddenObject != null)
+            switch (ReleasedNPCA) 
             {
-                hiddenObject.SetActive(true);
-            }
+                case 1:
+                    {
+                        ConsoleANPC1.SetActive(true);
+                        ReleasedNPCA++;
+                        break;
+                    }
+                case 2:
+                    {
+                        ConsoleANPC2.SetActive(true);
+                        ReleasedNPCA++;
+                        break;
+                    }
+                case 3:
+                    {
+                        ConsoleANPC3.SetActive(true);
+                        ReleasedNPCA++;
+                        break;
+                    }
+                default:
+                    {
+                        Debug.LogWarning("Invalid NPCA Value");
+                        break;
+                    }
+            }  
         }
         else
         {
             Debug.LogWarning("No NPCA to deplete");
         }
     }
-    // Method to release an NPC and activate the hidden object
+
+    // Method to release an NPC and activate the sleeper agents
     private void ReleaseNPCB()
     {
-        // Example logic to deplete NPCA
+        //  logic to release NPCB
         if (npcBCount > 0)
         {
             npcBCount--;
-            if (hiddenObject != null)
+            switch (ReleasedNPCB)
             {
-                hiddenObject.SetActive(true);
+                case 0:
+                    ConsoleBNPC1.SetActive(true);
+                    ReleasedNPCB++;
+                    break;
+                case 1:
+                    ConsoleBNPC2.SetActive(true);
+                    ReleasedNPCB++;
+                    break;
+                case 2:
+                    ConsoleBNPC3.SetActive(true);
+                    ReleasedNPCB++;
+                    break;
+                default:
+                    Debug.LogWarning("Invalid NPCB Value");
+                    break;
             }
         }
         else
@@ -85,16 +138,31 @@ public class Inventory : MonoBehaviour
             Debug.LogWarning("No NPCB to deplete");
         }
     }
-    // Method to release an NPC and activate the hidden object
+
+    // Method to release an NPC and activate the sleeper agents
     private void ReleaseNPCC()
     {
-        // Example logic to deplete NPCA
+        //  logic to release NPCC
         if (npcCCount > 0)
         {
             npcCCount--;
-            if (hiddenObject != null)
+            switch (ReleasedNPCC)
             {
-                hiddenObject.SetActive(true);
+                case 0:
+                    ConsoleCNPC1.SetActive(true);
+                    ReleasedNPCC++;
+                    break;
+                case 1:
+                    ConsoleCNPC2.SetActive(true);
+                    ReleasedNPCC++;
+                    break;
+                case 2:
+                    ConsoleCNPC3.SetActive(true);
+                    ReleasedNPCC++;
+                    break;
+                default:
+                    Debug.LogWarning("Invalid NPCC Value");
+                    break;
             }
         }
         else
@@ -111,11 +179,25 @@ public class Inventory : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("ConsoleB"))
         {
-            ReleaseNPCA();
+            ReleaseNPCB();
         }
         if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("ConsoleC"))
         {
-            ReleaseNPCA();
+            ReleaseNPCC();
         }
+    }
+
+    // Helper method to set active state for all NPCs
+    private void SetActiveStateForAllNPCs(bool state)
+    {
+        ConsoleANPC1.SetActive(state);
+        ConsoleANPC2.SetActive(state);
+        ConsoleANPC3.SetActive(state);
+        ConsoleBNPC1.SetActive(state);
+        ConsoleBNPC2.SetActive(state);
+        ConsoleBNPC3.SetActive(state);
+        ConsoleCNPC1.SetActive(state);
+        ConsoleCNPC2.SetActive(state);
+        ConsoleCNPC3.SetActive(state);
     }
 }

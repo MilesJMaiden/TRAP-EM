@@ -344,8 +344,7 @@ public class FirstPersonPlayerController : MonoBehaviour
     private void HandleGrappleHook()
     {
         if (Input.GetMouseButtonDown(1) && _canGrapple)
-        {
-            // Debug.Log("Grapple Hook used!");
+        {    
             RaycastHit hit;
             if (Physics.Raycast(m_CameraTransform.position, m_CameraTransform.forward, out hit, grappleDistance, groundMask))
             {
@@ -354,7 +353,6 @@ public class FirstPersonPlayerController : MonoBehaviour
                 _canGrapple = false;
                 _grappleCooldownTime = grappleCooldown;
                 m_LineRenderer.enabled = true;
-                // Debug.Log("Grapple Point: " + _grapplePoint);
                 OnGrappleUsed?.Invoke(); // Trigger the event
 
                 if (grappleCooldownSlider != null)
@@ -374,7 +372,6 @@ public class FirstPersonPlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Grapple Hooking!");
                 Vector3 direction = (_grapplePoint - transform.position).normalized;
                 m_CharacterController.Move(direction * (Time.deltaTime * grappleSpeed));
 
