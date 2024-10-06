@@ -326,6 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4632483450051897666}
   - component: {fileID: 2796751786569466633}
+  - component: {fileID: 7342229832724028634}
   m_Layer: 6
   m_Name: ConsoleA
   m_TagString: Untagged
@@ -371,6 +372,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.25, y: 2, z: 2.75}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7342229832724028634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6387037938805185824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceee8103cefd942489611e1d10ba9e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consoleAText: {fileID: 1427035123405967563}
 --- !u!1 &7244194741313706146
 GameObject:
   m_ObjectHideFlags: 0

@@ -110,4 +110,28 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    public void ReturnToMainMenu()
+    {
+        // Reset game state
+        isPaused = false;
+        Time.timeScale = 1f; // Resume the game
+
+        // Reset player controller
+        if (playerController != null)
+        {
+            playerController.SetPaused(false);
+        }
+
+        // Reset HUD
+        if (hudUIManager != null)
+        {
+            hudUIManager.EnableHUD();
+        }
+
+        // Load the main menu scene
+        SceneManager.LoadScene("MainMenuScene");
+
+        // Optionally, reset other game states here
+    }
 }

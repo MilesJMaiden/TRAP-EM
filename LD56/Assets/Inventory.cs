@@ -9,9 +9,9 @@ public class Inventory : MonoBehaviour
     public int npcACount;
     public int npcBCount;
     public int npcCCount;
-    private int ReleasedNPCA;
-    private int ReleasedNPCB;
-    private int ReleasedNPCC;
+    public int ReleasedNPCA;
+    public int ReleasedNPCB;
+    public int ReleasedNPCC;
 
     [Header("Console A NPCs")]
     [SerializeField] private GameObject ConsoleANPC1;

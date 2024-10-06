@@ -8,22 +8,22 @@ public class Scoring : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private int creaturesRemaining = 10;
-    [SerializeField]
     private float time = 0f;
     [SerializeField]
     private float Score = 10000f;
     public TimeMonitor timer;
-    
+    private Inventory inventory;
+
     void Start()
     {
         timer = gameObject.AddComponent<TimeMonitor>();
+        inventory = FindObjectOfType<Inventory>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (creaturesRemaining == 0)
+        if (AllNPCsReleased())
         {
             timer.StopMonitoring();
             time = timer.ElapsedTime;
@@ -32,5 +32,10 @@ public class Scoring : MonoBehaviour
             Debug.Log("Score: " + System.MathF.Round(Score));
         }
         
+    }
+
+    private bool AllNPCsReleased()
+    {
+        return inventory.ReleasedNPCA == 3 && inventory.ReleasedNPCB == 3 && inventory.ReleasedNPCC == 3;
     }
 }
