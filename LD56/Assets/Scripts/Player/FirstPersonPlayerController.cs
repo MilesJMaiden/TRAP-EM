@@ -59,6 +59,10 @@ public class FirstPersonPlayerController : MonoBehaviour
     [SerializeField] private float sprintingDetectionRadius = 7.0f; // Radius to detect objects while sprinting
     [SerializeField] private float crouchingDetectionRadius = 1.0f; // Radius to detect objects while crouching
 
+    [Header("Butterfly Net Settings")]
+    [SerializeField] private ButterflyNet butterflyNet; // Reference to the ButterflyNet script
+
+
     #endregion
 
     #region Private Fields
@@ -104,6 +108,7 @@ public class FirstPersonPlayerController : MonoBehaviour
         HandleCrouching();
         HandleJumping();
         HandleGrappleHook();
+        HandleButterflyNet();
         ApplyGravity();
     }
 
@@ -499,6 +504,24 @@ public class FirstPersonPlayerController : MonoBehaviour
         else
         {
             detectionCollider.radius = playerDetectionRadius;
+        }
+    }
+
+    /// <summary>
+    /// Handles the usage of the butterfly net.
+    /// </summary>
+    private void HandleButterflyNet()
+    {
+        if (m_InputManager.PlayerShotThisFrame()) // Change the key as needed
+        {
+            if (butterflyNet != null)
+            {
+                butterflyNet.Swing();
+            }
+            else
+            {
+                Debug.LogError("ButterflyNet is not assigned!");
+            }
         }
     }
 

@@ -49,6 +49,11 @@ public class InputManager : MonoBehaviour
     {
         return m_FirstPersonControls.FirstPersonPlayer.Jump.triggered;
     }
+    //Helper function
+    public bool PlayerShotThisFrame()
+    {
+        return m_FirstPersonControls.FirstPersonPlayer.Shoot.triggered;
+    }
 
     public static InputManager Instance
     {
