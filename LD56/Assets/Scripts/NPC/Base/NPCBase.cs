@@ -13,7 +13,6 @@ public abstract class NPCBase : MonoBehaviour
 
     // Reference to the NavMeshAgent and detection collider
     protected internal NavMeshAgent agent;
-    public Collider detectionCollider;
 
     // Reference to the player's Transform
     public Transform playerTransform;

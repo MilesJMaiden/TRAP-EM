@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3013559747222449195}
   - component: {fileID: 1319663896610486018}
-  - component: {fileID: 2472331176560709719}
+  - component: {fileID: 2004600350104929101}
   m_Layer: 0
   m_Name: Net
   m_TagString: Untagged
@@ -47,35 +47,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingDuration: 0.5
-  weaponCollider: {fileID: 7021879133757402674}
+  weaponCollider: {fileID: 2004600350104929101}
   playerController: {fileID: 0}
---- !u!54 &2472331176560709719
-Rigidbody:
+--- !u!65 &2004600350104929101
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298249513346453530}
-  serializedVersion: 4
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 0.75}
+  m_Center: {x: 0, y: 0, z: 0.75}
 --- !u!1 &2086476394232467538
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +116,6 @@ GameObject:
   - component: {fileID: 8481451579526416859}
   - component: {fileID: 5091956906656188819}
   - component: {fileID: 6659765933840724051}
-  - component: {fileID: 7021879133757402674}
   m_Layer: 0
   m_Name: Torus
   m_TagString: Untagged
@@ -3475,7 +3468,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4063
+  m_VersionIndex: 4090
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3564,28 +3557,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4107924209110984900}
   m_Mesh: {fileID: 0}
---- !u!64 &7021879133757402674
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4107924209110984900}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &5696428701289498375
 GameObject:
   m_ObjectHideFlags: 0
@@ -3599,7 +3570,6 @@ GameObject:
   - component: {fileID: 396943361146790457}
   - component: {fileID: 3255670479361680768}
   - component: {fileID: 2940083961790345859}
-  - component: {fileID: 7394555016309878253}
   m_Layer: 0
   m_Name: Walloper
   m_TagString: Untagged
@@ -4650,7 +4620,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1556
+  m_VersionIndex: 1583
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4735,26 +4705,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5696428701289498375}
-  m_Mesh: {fileID: 0}
---- !u!64 &7394555016309878253
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5696428701289498375}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}

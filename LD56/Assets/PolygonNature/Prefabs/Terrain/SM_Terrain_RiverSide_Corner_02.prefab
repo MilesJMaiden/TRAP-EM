@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23311433635830680}
   - component: {fileID: 95190807245158946}
   - component: {fileID: 64351639430534402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Terrain_RiverSide_Corner_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

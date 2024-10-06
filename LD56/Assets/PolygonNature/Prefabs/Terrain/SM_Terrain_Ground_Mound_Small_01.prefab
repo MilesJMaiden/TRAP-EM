@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23569762345378630}
   - component: {fileID: 95843895547225734}
   - component: {fileID: 64801677320369702}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Terrain_Ground_Mound_Small_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
