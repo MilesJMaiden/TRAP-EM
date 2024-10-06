@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4925463132159310}
   - component: {fileID: 33180888864049856}
   - component: {fileID: 23341412959067604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Tree_Willow_Large_01_LOD_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4091860562062044}
   - component: {fileID: 205654868191982114}
   - component: {fileID: 136583032572135792}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Tree_Willow_Large_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 17.5, y: 17.5, z: 17.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4412774177680730}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 4412774177680730}
   - component: {fileID: 33685347141283966}
   - component: {fileID: 23413918333122242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Tree_Willow_Large_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

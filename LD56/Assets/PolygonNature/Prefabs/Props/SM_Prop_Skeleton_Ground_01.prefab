@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4165618951862630}
   - component: {fileID: 33483704471405936}
   - component: {fileID: 23043960531796214}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Prop_Skeleton_Ground_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

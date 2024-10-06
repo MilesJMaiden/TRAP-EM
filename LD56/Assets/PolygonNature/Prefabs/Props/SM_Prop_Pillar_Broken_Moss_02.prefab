@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33461779401158906}
   - component: {fileID: 23235674807967304}
   - component: {fileID: 65057651883918636}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Prop_Pillar_Broken_Moss_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
