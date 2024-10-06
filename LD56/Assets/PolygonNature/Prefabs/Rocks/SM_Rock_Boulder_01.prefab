@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33264041529804706}
   - component: {fileID: 23612501818743164}
   - component: {fileID: 64630274177340486}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Rock_Boulder_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
