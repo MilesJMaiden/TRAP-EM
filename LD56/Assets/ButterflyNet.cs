@@ -12,6 +12,8 @@ public class ButterflyNet : MonoBehaviour
     private bool isSwinging = false; // Boolean to check if the weapon is swinging
     private float swingTime = 0.0f; // Time elapsed during the swing
 
+    private Inventory inventory;
+
     void Start()
     {
         if (weaponCollider == null)
@@ -56,10 +58,41 @@ public class ButterflyNet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isSwinging && other.CompareTag("Enemy"))
+        if (isSwinging && (other.CompareTag("NPCA") || other.CompareTag("NPCB") || other.CompareTag("NPCC")))
         {
             // Destroy the enemy on hit
             Destroy(other.gameObject);
+
+            // Use the Inventory component to capture the NPC
+            if (inventory != null)
+            {
+                // Assuming the NPC type is determined by the tag or another property
+                int npcType = DetermineNPCType(other);
+                inventory.CaptureNPC(npcType);
+            }
+        }
+    }
+
+    // Method to determine the NPC type based on the collided object
+    private int DetermineNPCType(Collider other)
+    {
+        // Example logic to determine NPC type based on tag
+        if (other.CompareTag("NPCA"))
+        {
+            return 1;
+        }
+        else if (other.CompareTag("NPCB"))
+        {
+            return 2;
+        }
+        else if (other.CompareTag("NPCC"))
+        {
+            return 3;
+        }
+        else
+        {
+            Debug.LogWarning("Unknown NPC type");
+            return 0; // Invalid type
         }
     }
 }

@@ -82,6 +82,10 @@ public class FirstPersonPlayerController : MonoBehaviour
     private bool _isDashing = false;
     private float _dashTime;
     private float _dashCooldownTime;
+    // Fields for double-tap detection
+    private float _lastShiftTapTime = 0f;
+    private float _doubleTapTimeWindow = 0.3f; // Time window for double-tap detection
+
     #endregion
 
     #region Unity Methods
@@ -280,7 +284,7 @@ public class FirstPersonPlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && _canDash)
+        if (Input.GetKeyDown(KeyCode.F) && _canDash)
         {
             _isDashing = true;
             _dashTime = dashDuration;
