@@ -7,9 +7,15 @@ public class FleeState : NPCState
     private float timeElapsed = 0f; // Tracks time for weaving movement
     private Vector3 lastFleeDirection;
 
-    // NEW: Timer to control how frequently objects are instantiated
+    // Timer to control how frequently objects are instantiated
     private float spawnCooldown = 1f; // Time between spawns
     private float spawnTimer = 0f; // Tracks time since last spawn
+
+    // NEW: Variables for raycasting and obstacle detection
+    private float obstacleDetectionDistance = 3f; // Distance to check for obstacles in front
+    private float stuckCheckTimer = 0f; // Timer for checking if AI is stuck
+    private float stuckThreshold = 2f; // Time threshold to determine if AI is stuck
+    private Vector3 lastPosition; // Last recorded position to check if AI is stuck
 
     public FleeState(NPCBase npcBase, Transform player) : base(npcBase)
     {
@@ -24,6 +30,7 @@ public class FleeState : NPCState
         timeOutsideFleeDistance = 0f; // Reset safe time tracking
         spawnTimer = 0f; // Reset spawn timer
         lastFleeDirection = npc.transform.position - playerTransform.position; // Initialize flee direction
+        lastPosition = npc.transform.position; // Initialize last known position
     }
 
     public override void Execute()
@@ -32,6 +39,9 @@ public class FleeState : NPCState
 
         // Control object instantiation while fleeing
         HandleFleeObjectSpawn();
+
+        // Check if AI is stuck
+        HandleStuckDetection();
 
         if (Vector3.Distance(npc.transform.position, playerTransform.position) > npc.fleeDistanceThreshold)
         {
@@ -52,6 +62,9 @@ public class FleeState : NPCState
     {
         // Calculate base flee direction (away from the player)
         Vector3 fleeDirection = (npc.transform.position - playerTransform.position).normalized;
+
+        // Check for obstacles and adjust the flee direction
+        fleeDirection = AvoidObstacles(fleeDirection);
 
         // Apply movement variation based on enabled boolean
         if (npc.useSerpentineMovement)
@@ -76,32 +89,6 @@ public class FleeState : NPCState
         npc.agent.destination = fleeDestination;
     }
 
-    // NEW: Method to handle object instantiation while fleeing
-    private void HandleFleeObjectSpawn()
-    {
-        // Only instantiate if the prefab reference is set
-        if (npc.fleeObjectPrefab == null)
-        {
-            return;
-        }
-
-        // Increment the spawn timer
-        spawnTimer += Time.deltaTime;
-
-        // Instantiate the object when the timer exceeds the cooldown
-        if (spawnTimer >= spawnCooldown)
-        {
-            // Instantiate the object slightly behind the NPC's position
-            Vector3 spawnPosition = npc.transform.position - npc.transform.forward * 1.5f;
-            GameObject instantiatedObject = Object.Instantiate(npc.fleeObjectPrefab, spawnPosition, Quaternion.identity);
-            Debug.Log("Instantiated object behind NPC: " + instantiatedObject.name);
-
-            // Reset the spawn timer
-            spawnTimer = 0f;
-        }
-    }
-
-    // Serpentine Movement: Smooth, sinusoidal weaving left and right
     private Vector3 ApplySerpentineMovement(Vector3 fleeDirection)
     {
         Vector3 perpendicular = Vector3.Cross(Vector3.up, fleeDirection).normalized;
@@ -110,7 +97,6 @@ public class FleeState : NPCState
         return (fleeDirection + perpendicular * oscillation).normalized;
     }
 
-    // Zigzag Movement: More abrupt, linear left and right changes
     private Vector3 ApplyZigzagMovement(Vector3 fleeDirection)
     {
         Vector3 perpendicular = Vector3.Cross(Vector3.up, fleeDirection).normalized;
@@ -119,7 +105,6 @@ public class FleeState : NPCState
         return (fleeDirection + perpendicular * zigzag).normalized;
     }
 
-    // Random Jitter Movement: Adds small, random deviations to the direction
     private Vector3 ApplyRandomJitter(Vector3 fleeDirection)
     {
         float jitterX = Random.Range(-npc.jitterIntensity, npc.jitterIntensity);
@@ -128,7 +113,6 @@ public class FleeState : NPCState
         return (fleeDirection + jitter).normalized;
     }
 
-    // Circular Movement: Moves the NPC in a circular pattern while fleeing
     private Vector3 ApplyCircularMovement(Vector3 fleeDirection)
     {
         timeElapsed += Time.deltaTime;
@@ -137,9 +121,83 @@ public class FleeState : NPCState
         return (fleeDirection + circularOffset).normalized;
     }
 
+    // Method to detect obstacles and adjust flee direction
+    private Vector3 AvoidObstacles(Vector3 fleeDirection)
+    {
+        RaycastHit hit;
+        Vector3 origin = npc.transform.position + Vector3.up; // Cast slightly above the ground
+
+        // Raycast in the flee direction to check for obstacles
+        if (Physics.Raycast(origin, fleeDirection, out hit, obstacleDetectionDistance))
+        {
+            if (hit.collider != null && hit.collider.gameObject != npc.gameObject)
+            {
+                Debug.Log("Obstacle detected, adjusting flee direction.");
+
+                // Adjust the flee direction by adding a perpendicular vector to avoid the obstacle
+                Vector3 avoidanceDirection = Vector3.Cross(hit.normal, Vector3.up).normalized;
+
+                // Combine the flee direction with the avoidance direction
+                return (fleeDirection + avoidanceDirection).normalized;
+            }
+        }
+
+        return fleeDirection; // Return the original flee direction if no obstacle detected
+    }
+
+    // Method to handle stuck detection
+    private void HandleStuckDetection()
+    {
+        if (Vector3.Distance(npc.transform.position, lastPosition) < 0.1f)
+        {
+            stuckCheckTimer += Time.deltaTime;
+
+            if (stuckCheckTimer > stuckThreshold)
+            {
+                Debug.Log("NPC is stuck, recalculating path.");
+
+                // Reset the path or move in a random direction to get unstuck
+                FleeInRandomDirection();
+                stuckCheckTimer = 0f;
+            }
+        }
+        else
+        {
+            stuckCheckTimer = 0f;
+        }
+
+        lastPosition = npc.transform.position;
+    }
+
+    private void FleeInRandomDirection()
+    {
+        Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+        Vector3 fleeDestination = npc.transform.position + randomDirection * 10f;
+        npc.agent.destination = fleeDestination;
+        Debug.Log("Fleeing in a random direction.");
+    }
+
+    private void HandleFleeObjectSpawn()
+    {
+        if (npc.fleeObjectPrefab == null)
+        {
+            return;
+        }
+
+        spawnTimer += Time.deltaTime;
+
+        if (spawnTimer >= spawnCooldown)
+        {
+            Vector3 spawnPosition = npc.transform.position - npc.transform.forward * 1.5f;
+            GameObject instantiatedObject = Object.Instantiate(npc.fleeObjectPrefab, spawnPosition, Quaternion.identity);
+            Debug.Log("Instantiated object behind NPC: " + instantiatedObject.name);
+
+            spawnTimer = 0f;
+        }
+    }
+
     private void ReturnToNearestPatrolPoint()
     {
-        // Find the nearest patrol point to return to
         Transform nearestPatrolPoint = null;
         float minDistance = Mathf.Infinity;
 
