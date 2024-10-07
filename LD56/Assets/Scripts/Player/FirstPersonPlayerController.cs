@@ -23,10 +23,10 @@ public class FirstPersonPlayerController : MonoBehaviour
     #region Serialized Fields
 
     [Header("Player Settings")]
-    [SerializeField] private float playerSpeed = 2.0f;
-    [SerializeField] private float sprintSpeed = 4.0f;
-    [SerializeField] private float crouchSpeed = 1.0f;
-    [SerializeField] private float jumpHeight = 1.0f;
+    [SerializeField] private float playerSpeed = 3.0f;
+    [SerializeField] private float sprintSpeed = 6.0f;
+    [SerializeField] private float crouchSpeed = 2.0f;
+    [SerializeField] private float jumpHeight = 1.5f;
 
     [SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private int maxJumpCount = 2;
@@ -37,15 +37,15 @@ public class FirstPersonPlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
 
     [Header("Grapple Hook")]
-    [SerializeField] private float grappleDistance = 20.0f;
-    [SerializeField] private float grappleSpeed = 10.0f;
+    [SerializeField] private float grappleDistance = 100.0f;
+    [SerializeField] private float grappleSpeed = 50.0f;
     [SerializeField] private float grappleCooldown = 15.0f;
     [SerializeField] private GameObject grappleLineObject;
     [SerializeField] private Slider grappleCooldownSlider;
 
     [Header("Dash Settings")]
     [SerializeField] private float dashCooldown = 5.0f;
-    [SerializeField] private float dashSpeed = 10.0f;
+    [SerializeField] private float dashSpeed = 50.0f;
     [SerializeField] private float dashDuration = 0.3f;
     [SerializeField] private Slider dashCooldownSlider;
 

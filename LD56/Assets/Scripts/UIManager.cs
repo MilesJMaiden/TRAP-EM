@@ -21,20 +21,54 @@ public class UIManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            Debug.Log("UIManager instance created");
             DontDestroyOnLoad(gameObject); // Optional: Keeps the UIManager across scenes
+        }
+        else if(Instance != this)
+        {
+            Debug.Log("Destroying duplicate UIManager instance");
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(InitializeAfterSceneLoad());
+    }
+
+    private IEnumerator InitializeAfterSceneLoad()
+    {
+        yield return null; // Wait for one frame to ensure all objects are initialized
+
+        // Find the player controller and HUD manager in the scene
+        playerController = FindObjectOfType<FirstPersonPlayerController>();
+        hudUIManager = FindObjectOfType<HUDUIManager>();
+
+        if (playerController != null)
+        {
+            Debug.Log("PlayerController found");
         }
         else
         {
-            Destroy(gameObject);
+            Debug.LogWarning("PlayerController not found");
+        }
+
+        if (hudUIManager != null)
+        {
+            Debug.Log("HUDUIManager found");
+        }
+        else
+        {
+            Debug.LogWarning("HUDUIManager not found");
         }
     }
 
     void Start()
     {
         pauseMenu.SetActive(false);
-        // Find the player controller and HUD manager in the scene
-        playerController = FindObjectOfType<FirstPersonPlayerController>();
-        hudUIManager = FindObjectOfType<HUDUIManager>();
+        //// Find the player controller and HUD manager in the scene
+        //playerController = FindObjectOfType<FirstPersonPlayerController>();
+        //hudUIManager = FindObjectOfType<HUDUIManager>();
     }
 
     void Update()

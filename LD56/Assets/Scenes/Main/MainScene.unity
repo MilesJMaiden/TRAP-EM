@@ -19777,17 +19777,17 @@ PrefabInstance:
     - target: {fileID: 1213809801144234323, guid: 5d632e0a15b20804593aec8e70fbdad6,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1213809801144234323, guid: 5d632e0a15b20804593aec8e70fbdad6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1213809801144234323, guid: 5d632e0a15b20804593aec8e70fbdad6,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1427021390989777077, guid: 5d632e0a15b20804593aec8e70fbdad6,
         type: 3}
@@ -21272,9 +21272,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
         type: 3}
+      propertyPath: dashSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
+        type: 3}
+      propertyPath: crouchSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
+        type: 3}
+      propertyPath: playerSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
+        type: 3}
+      propertyPath: sprintSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
+        type: 3}
       propertyPath: butterflyNet
       value: 
       objectReference: {fileID: 2032765648}
+    - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
+        type: 3}
+      propertyPath: dashDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
+        type: 3}
+      propertyPath: grappleSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
+        type: 3}
+      propertyPath: grappleDistance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6488452388842100828, guid: 5e61dece678436e4facecfcda5125dbe,
         type: 3}
       propertyPath: dashCooldownSlider

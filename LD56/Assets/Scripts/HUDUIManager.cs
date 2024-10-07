@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HUDUIManager : MonoBehaviour
 {
@@ -18,8 +19,26 @@ public class HUDUIManager : MonoBehaviour
     private float score;
     private float elapsedTime = 0f;
     private bool isMonitoringTime = false;
+    private bool isGameOver = false;
 
     private Inventory inventory;
+
+    public static HUDUIManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            Debug.Log("HUDUIManager instance created");
+            DontDestroyOnLoad(gameObject); // Optional: Keeps the UIManager across scenes
+        }
+        else if (Instance != this)
+        {
+            Debug.Log("Destroying duplicate HUDUIManager instance");
+            Destroy(gameObject);
+        }
+    }
 
     void OnEnable()
     {
@@ -46,10 +65,12 @@ public class HUDUIManager : MonoBehaviour
             UpdateHUD();
         }
 
-        if (AllNPCsReleased())
+        if (AllNPCsReleased() && !isGameOver)
         {
             StopMonitoringTime();
             Debug.Log("Score: " + Mathf.Round(score));
+            isGameOver = true;
+            TransitionToGameOverMenu();
         }
     }
 
@@ -102,5 +123,13 @@ public class HUDUIManager : MonoBehaviour
     private bool AllNPCsReleased()
     {
         return inventory.ReleasedNPCA == 3 && inventory.ReleasedNPCB == 3 && inventory.ReleasedNPCC == 3;
+    }
+
+    private void TransitionToGameOverMenu()
+    {
+        // Store the score in a static variable or a GameManager
+        GameOverManager.FinalScore = Mathf.Round(score);
+        // Load the GameOverMenuScene
+        SceneManager.LoadScene("GameOverScene");
     }
 }
