@@ -408,6 +408,18 @@ MonoBehaviour:
   - {fileID: 0}
   isAlert: 0
   playerTransform: {fileID: 0}
+  fleeObjectPrefab: {fileID: 606678179157639682, guid: 2bb1732a45af4e24ca6775065cd854a4,
+    type: 3}
+  fleeDistanceThreshold: 20
+  fleeCheckDuration: 5
+  useSerpentineMovement: 1
+  useZigzagMovement: 0
+  useRandomJitterMovement: 0
+  useCircularMovement: 0
+  weaveFrequency: 2
+  weaveAmplitude: 2
+  jitterIntensity: 1
+  circularMovementRadius: 3
 --- !u!54 &6938176958343878809
 Rigidbody:
   m_ObjectHideFlags: 0
