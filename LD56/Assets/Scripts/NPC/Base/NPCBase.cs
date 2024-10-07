@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class NPCBase : MonoBehaviour
 {
@@ -17,9 +17,17 @@ public abstract class NPCBase : MonoBehaviour
     // Reference to the player's Transform
     public Transform playerTransform;
 
+    // NEW: Declare the currentState as a protected variable
     protected NPCState currentState;
 
-    // Movement variations
+    // Reference to the GameObject that can be instantiated in the FleeState
+    public GameObject fleeObjectPrefab;
+
+    // Movement variations and flee behavior
+    public float fleeDistanceThreshold = 20f;
+    public float fleeCheckDuration = 5f;
+
+    // Patrol speed variance
     public bool useSerpentineMovement = true;
     public bool useZigzagMovement = false;
     public bool useRandomJitterMovement = false;
@@ -29,10 +37,6 @@ public abstract class NPCBase : MonoBehaviour
     public float weaveAmplitude = 2f;
     public float jitterIntensity = 1f;
     public float circularMovementRadius = 3f;
-
-    // NEW: Define the flee behavior properties as public so they can be accessed by FleeState
-    public float fleeDistanceThreshold = 20f;  // Distance NPC tries to keep away from the player
-    public float fleeCheckDuration = 5f;       // Time NPC needs to be safe before returning to patrol
 
     // Common Methods
     protected virtual void Start()
@@ -51,7 +55,7 @@ public abstract class NPCBase : MonoBehaviour
     protected virtual void Update()
     {
         // Execute the current state's behavior
-        currentState.Execute();
+        currentState.Execute();  // Ensure currentState is called during the Update loop
     }
 
     public void SetState(NPCState newState)

@@ -1,18 +1,15 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class FleeState : NPCState
 {
     private Transform playerTransform;
-
-    // Track how long the NPC has been safely away from the player
-    private float timeOutsideFleeDistance = 0f;
-
-    // Tracks time for weaving movement
-    private float timeElapsed = 0f;
-
-    // Store the last flee direction for reference
+    private float timeOutsideFleeDistance = 0f; // Track how long NPC is safely away from player
+    private float timeElapsed = 0f; // Tracks time for weaving movement
     private Vector3 lastFleeDirection;
+
+    // NEW: Timer to control how frequently objects are instantiated
+    private float spawnCooldown = 1f; // Time between spawns
+    private float spawnTimer = 0f; // Tracks time since last spawn
 
     public FleeState(NPCBase npcBase, Transform player) : base(npcBase)
     {
@@ -24,12 +21,17 @@ public class FleeState : NPCState
         npc.agent.speed = Mathf.Lerp(npc.patrolSpeed, npc.alertSpeed, Time.deltaTime * 5);
         npc.isAlert = true;
         timeElapsed = 0f; // Reset movement timer
+        timeOutsideFleeDistance = 0f; // Reset safe time tracking
+        spawnTimer = 0f; // Reset spawn timer
         lastFleeDirection = npc.transform.position - playerTransform.position; // Initialize flee direction
     }
 
     public override void Execute()
     {
         FleeFromPlayer();
+
+        // Control object instantiation while fleeing
+        HandleFleeObjectSpawn();
 
         if (Vector3.Distance(npc.transform.position, playerTransform.position) > npc.fleeDistanceThreshold)
         {
@@ -72,6 +74,31 @@ public class FleeState : NPCState
         // Set the NPC destination
         Vector3 fleeDestination = npc.transform.position + fleeDirection * 10f;
         npc.agent.destination = fleeDestination;
+    }
+
+    // NEW: Method to handle object instantiation while fleeing
+    private void HandleFleeObjectSpawn()
+    {
+        // Only instantiate if the prefab reference is set
+        if (npc.fleeObjectPrefab == null)
+        {
+            return;
+        }
+
+        // Increment the spawn timer
+        spawnTimer += Time.deltaTime;
+
+        // Instantiate the object when the timer exceeds the cooldown
+        if (spawnTimer >= spawnCooldown)
+        {
+            // Instantiate the object slightly behind the NPC's position
+            Vector3 spawnPosition = npc.transform.position - npc.transform.forward * 1.5f;
+            GameObject instantiatedObject = Object.Instantiate(npc.fleeObjectPrefab, spawnPosition, Quaternion.identity);
+            Debug.Log("Instantiated object behind NPC: " + instantiatedObject.name);
+
+            // Reset the spawn timer
+            spawnTimer = 0f;
+        }
     }
 
     // Serpentine Movement: Smooth, sinusoidal weaving left and right
