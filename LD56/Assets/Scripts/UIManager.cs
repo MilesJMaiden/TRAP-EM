@@ -149,6 +149,7 @@ public class UIManager : MonoBehaviour
     {
         // Reset game state
         isPaused = false;
+        pauseMenu.SetActive(false);
         Time.timeScale = 1f; // Resume the game
 
         // Reset player controller

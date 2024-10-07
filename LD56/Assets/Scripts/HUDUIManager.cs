@@ -25,6 +25,8 @@ public class HUDUIManager : MonoBehaviour
 
     public static HUDUIManager Instance { get; private set; }
 
+    public static bool ShouldResetHUD { get; set; } = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -38,22 +40,31 @@ public class HUDUIManager : MonoBehaviour
             Debug.Log("Destroying duplicate HUDUIManager instance");
             Destroy(gameObject);
         }
+
+        if (!isGameOver)
+        {
+            Instance.gameObject.SetActive(true);
+        }
+
     }
 
     void OnEnable()
     {
         FirstPersonPlayerController.OnGrappleUsed += HandleGrappleUsed;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
         FirstPersonPlayerController.OnGrappleUsed -= HandleGrappleUsed;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     void Start()
     {
         inventory = FindObjectOfType<Inventory>();
         score = initialScore;
         StartMonitoringTime();
+
     }
 
     void Update()
@@ -65,13 +76,16 @@ public class HUDUIManager : MonoBehaviour
             UpdateHUD();
         }
 
+        // Debug.Log("All NPCs released: " + AllNPCsReleased() + "isGameOver: " + isGameOver);
         if (AllNPCsReleased() && !isGameOver)
         {
+            Debug.Log("End of game reached");
             StopMonitoringTime();
             Debug.Log("Score: " + Mathf.Round(score));
             isGameOver = true;
             TransitionToGameOverMenu();
         }
+
     }
 
     private void UpdateHUD()
@@ -82,8 +96,18 @@ public class HUDUIManager : MonoBehaviour
 
     private void StartMonitoringTime()
     {
-        isMonitoringTime = true;
+        Debug.Log("Monitoring time should start: " + isMonitoringTime);
         elapsedTime = 0f;
+        isMonitoringTime = true;
+        Debug.Log("Monitoring time started: " + isMonitoringTime);
+        
+    }
+
+    private void StartMonitoringTimeWithoutReset()
+    {
+        Debug.Log("Monitoring time should start without reset: " + isMonitoringTime);
+        isMonitoringTime = true;
+        Debug.Log("Monitoring time started without reset: " + isMonitoringTime);
     }
 
     private void StopMonitoringTime()
@@ -124,12 +148,32 @@ public class HUDUIManager : MonoBehaviour
     {
         return inventory.ReleasedNPCA == 3 && inventory.ReleasedNPCB == 3 && inventory.ReleasedNPCC == 3;
     }
+    public void ResetHUD()
+    {
+        score = initialScore;
+        elapsedTime = 0f; 
+        isMonitoringTime = false;
+        isGameOver = false;
+        inventory.ReleasedNPCA = 0;
+        UpdateHUD();
+    }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainScene")
+        {
+            ResetHUD();
+            StartMonitoringTime();
+        }
+    }
     private void TransitionToGameOverMenu()
     {
         // Store the score in a static variable or a GameManager
         GameOverManager.FinalScore = Mathf.Round(score);
+        isGameOver = true;
         // Load the GameOverMenuScene
         SceneManager.LoadScene("GameOverScene");
     }
+
+    
 }

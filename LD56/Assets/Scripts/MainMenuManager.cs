@@ -7,6 +7,10 @@ public class MainMenuManager : MonoBehaviour
 {
     public void StartGame()
     {
+        // Reset HUD values
+        HUDUIManager.ShouldResetHUD = true;
+
+        Time.timeScale = 1f;
         // Load the game scene
         SceneManager.LoadScene("MainScene");
     }

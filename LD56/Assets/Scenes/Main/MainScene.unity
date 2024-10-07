@@ -14715,12 +14715,12 @@ PrefabInstance:
     - target: {fileID: 5028001767694540270, guid: 731beb7ccdbad1a419f5da22044057bb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5028001767694540270, guid: 731beb7ccdbad1a419f5da22044057bb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExitGame
+      value: ReturnToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5028001767694540270, guid: 731beb7ccdbad1a419f5da22044057bb,
         type: 3}
