@@ -100,6 +100,7 @@ public class FirstPersonPlayerController : MonoBehaviour
     {
         if (isPaused) return;
 
+        HandleSliderCheck();
         HandleGroundCheck();
         HandleMovement();
         HandleCrouching();
@@ -446,6 +447,49 @@ public class FirstPersonPlayerController : MonoBehaviour
 
     #endregion
 
+    #region Coroutines
+
+    public void HandleSliderCheck()
+    {
+        if (dashCooldownSlider == null)
+        {
+            StartCoroutine(FindDashCooldownSlider());
+        }
+        if (grappleCooldownSlider == null)
+        {
+            StartCoroutine(FindGrappleCooldownSlider());
+        }
+    }
+
+    /// <summary>
+    /// Coroutine to find the grapple cooldown slider if it is null.
+    /// </summary>
+    private IEnumerator FindGrappleCooldownSlider()
+    {
+        while (grappleCooldownSlider == null)
+        {
+            grappleCooldownSlider = GameObject.Find("Grapple Progress Slider")?.GetComponent<Slider>();
+
+
+
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// Coroutine to find the dash cooldown slider if it is null.
+    /// </summary>
+    private IEnumerator FindDashCooldownSlider()
+    {
+        while (dashCooldownSlider == null)
+        {
+            dashCooldownSlider = GameObject.Find("Dash Progress Slider")?.GetComponent<Slider>();
+            yield return null;
+        }
+    }
+
+    #endregion
+
     #region Miscellaneous
 
     /// <summary>
@@ -519,6 +563,10 @@ public class FirstPersonPlayerController : MonoBehaviour
             }
         }
     }
+
+    
+
+
 
     #endregion
 }
