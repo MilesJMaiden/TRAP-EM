@@ -86,7 +86,9 @@ public class HUDUIManager : MonoBehaviour
             StopMonitoringTime();
             Debug.Log("Score: " + Mathf.Round(score));
             isGameOver = true;
-            TransitionToGameOverMenu();
+            timeText.text = "Final Time: " + elapsedTime.ToString("F2");
+            scoreText.text = "Final Score: " + Mathf.Round(score).ToString();
+            // TransitionToGameOverMenu();
         }
 
     }
@@ -171,11 +173,11 @@ public class HUDUIManager : MonoBehaviour
     private void TransitionToGameOverMenu()
     {
         // Store the score in a static variable or a GameManager
-        GameOverManager.FinalScore = Mathf.Round(score);
+        // GameOverManager.FinalScore = Mathf.Round(score);
         isGameOver = true;
-        inventory.ReleasedNPCA = 0;
+        // inventory.ReleasedNPCA = 0;
         // Load the GameOverMenuScene
-        SceneManager.LoadScene("GameOverScene");
+        // SceneManager.LoadScene("GameOverScene");
     }
 
     
