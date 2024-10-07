@@ -7,7 +7,12 @@ public class TypeANPC : NPCBase
     protected override void Start()
     {
         base.Start();
-        // Add specific behavior for Type A NPC
+        // Customize behavior for Type A NPC here if needed
+        // E.g., change movement patterns
+        useSerpentineMovement = true;
+        useZigzagMovement = false;
+        weaveFrequency = 2.5f;
+        weaveAmplitude = 1.5f;
     }
 
     protected override void Update()

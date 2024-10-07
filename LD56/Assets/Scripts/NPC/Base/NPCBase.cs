@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class NPCBase : MonoBehaviour
 {
-    // Common Properties for all NPCs
+    // Existing properties
     public float patrolSpeed = 3.5f;
     public float alertSpeed = 6.0f;
     public List<Transform> patrolPoints;
@@ -18,6 +18,21 @@ public abstract class NPCBase : MonoBehaviour
     public Transform playerTransform;
 
     protected NPCState currentState;
+
+    // Movement variations
+    public bool useSerpentineMovement = true;
+    public bool useZigzagMovement = false;
+    public bool useRandomJitterMovement = false;
+    public bool useCircularMovement = false;
+
+    public float weaveFrequency = 2f;
+    public float weaveAmplitude = 2f;
+    public float jitterIntensity = 1f;
+    public float circularMovementRadius = 3f;
+
+    // NEW: Define the flee behavior properties as public so they can be accessed by FleeState
+    public float fleeDistanceThreshold = 20f;  // Distance NPC tries to keep away from the player
+    public float fleeCheckDuration = 5f;       // Time NPC needs to be safe before returning to patrol
 
     // Common Methods
     protected virtual void Start()

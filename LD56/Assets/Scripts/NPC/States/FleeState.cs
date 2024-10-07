@@ -5,14 +5,14 @@ public class FleeState : NPCState
 {
     private Transform playerTransform;
 
-    // Designer-friendly parameters for serpentine movement
-    public float weaveFrequency = 2f;   // How fast the NPC moves left and right
-    public float weaveAmplitude = 2f;   // How far the NPC moves left and right
-    public float fleeDistanceThreshold = 20f; // Distance NPC tries to keep away from the player
-    public float fleeCheckDuration = 5f; // Time NPC needs to be safe before returning to patrol
-    private float timeOutsideFleeDistance = 0f; // Track how long NPC is safely away from player
+    // Track how long the NPC has been safely away from the player
+    private float timeOutsideFleeDistance = 0f;
 
-    private float timeElapsed = 0f; // Tracks time for weaving movement
+    // Tracks time for weaving movement
+    private float timeElapsed = 0f;
+
+    // Store the last flee direction for reference
+    private Vector3 lastFleeDirection;
 
     public FleeState(NPCBase npcBase, Transform player) : base(npcBase)
     {
@@ -21,61 +21,93 @@ public class FleeState : NPCState
 
     public override void EnterState()
     {
-        // Lerp to alert speed over time
         npc.agent.speed = Mathf.Lerp(npc.patrolSpeed, npc.alertSpeed, Time.deltaTime * 5);
         npc.isAlert = true;
-        timeElapsed = 0f; // Reset weaving timer
+        timeElapsed = 0f; // Reset movement timer
+        lastFleeDirection = npc.transform.position - playerTransform.position; // Initialize flee direction
     }
 
     public override void Execute()
     {
         FleeFromPlayer();
 
-        // Check if NPC has maintained distance for the required period
-        if (Vector3.Distance(npc.transform.position, playerTransform.position) > fleeDistanceThreshold)
+        if (Vector3.Distance(npc.transform.position, playerTransform.position) > npc.fleeDistanceThreshold)
         {
             timeOutsideFleeDistance += Time.deltaTime;
 
-            // If NPC is safe for a certain amount of time, return to patrol state
-            if (timeOutsideFleeDistance > fleeCheckDuration)
+            if (timeOutsideFleeDistance > npc.fleeCheckDuration)
             {
                 ReturnToNearestPatrolPoint();
             }
         }
         else
         {
-            // Reset the timer if NPC is too close
             timeOutsideFleeDistance = 0;
         }
     }
 
     private void FleeFromPlayer()
     {
-        // Find direction away from the player
+        // Calculate base flee direction (away from the player)
         Vector3 fleeDirection = (npc.transform.position - playerTransform.position).normalized;
 
-        // Add serpentine (weaving) effect to the flee direction
-        Vector3 serpentineFleeDirection = AddSerpentineMovement(fleeDirection);
+        // Apply movement variation based on enabled boolean
+        if (npc.useSerpentineMovement)
+        {
+            fleeDirection = ApplySerpentineMovement(fleeDirection);
+        }
+        else if (npc.useZigzagMovement)
+        {
+            fleeDirection = ApplyZigzagMovement(fleeDirection);
+        }
+        else if (npc.useRandomJitterMovement)
+        {
+            fleeDirection = ApplyRandomJitter(fleeDirection);
+        }
+        else if (npc.useCircularMovement)
+        {
+            fleeDirection = ApplyCircularMovement(fleeDirection);
+        }
 
-        // Set flee destination a certain distance in the adjusted flee direction
-        Vector3 fleeDestination = npc.transform.position + serpentineFleeDirection * 10f; // Arbitrary flee distance multiplier
-
+        // Set the NPC destination
+        Vector3 fleeDestination = npc.transform.position + fleeDirection * 10f;
         npc.agent.destination = fleeDestination;
     }
 
-    // Adds serpentine movement to the flee direction
-    private Vector3 AddSerpentineMovement(Vector3 fleeDirection)
+    // Serpentine Movement: Smooth, sinusoidal weaving left and right
+    private Vector3 ApplySerpentineMovement(Vector3 fleeDirection)
     {
-        // Calculate the perpendicular direction to the flee direction (for left-right weaving)
         Vector3 perpendicular = Vector3.Cross(Vector3.up, fleeDirection).normalized;
-
-        // Add a sinusoidal oscillation to the perpendicular direction
         timeElapsed += Time.deltaTime;
-        float oscillation = Mathf.Sin(timeElapsed * weaveFrequency) * weaveAmplitude;
+        float oscillation = Mathf.Sin(timeElapsed * npc.weaveFrequency) * npc.weaveAmplitude;
+        return (fleeDirection + perpendicular * oscillation).normalized;
+    }
 
-        // Combine the flee direction with the oscillation for serpentine motion
-        Vector3 serpentineDirection = (fleeDirection + perpendicular * oscillation).normalized;
-        return serpentineDirection;
+    // Zigzag Movement: More abrupt, linear left and right changes
+    private Vector3 ApplyZigzagMovement(Vector3 fleeDirection)
+    {
+        Vector3 perpendicular = Vector3.Cross(Vector3.up, fleeDirection).normalized;
+        timeElapsed += Time.deltaTime;
+        float zigzag = (Mathf.Floor(timeElapsed * npc.weaveFrequency) % 2 == 0) ? npc.weaveAmplitude : -npc.weaveAmplitude;
+        return (fleeDirection + perpendicular * zigzag).normalized;
+    }
+
+    // Random Jitter Movement: Adds small, random deviations to the direction
+    private Vector3 ApplyRandomJitter(Vector3 fleeDirection)
+    {
+        float jitterX = Random.Range(-npc.jitterIntensity, npc.jitterIntensity);
+        float jitterZ = Random.Range(-npc.jitterIntensity, npc.jitterIntensity);
+        Vector3 jitter = new Vector3(jitterX, 0, jitterZ);
+        return (fleeDirection + jitter).normalized;
+    }
+
+    // Circular Movement: Moves the NPC in a circular pattern while fleeing
+    private Vector3 ApplyCircularMovement(Vector3 fleeDirection)
+    {
+        timeElapsed += Time.deltaTime;
+        float angle = timeElapsed * npc.weaveFrequency;
+        Vector3 circularOffset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * npc.circularMovementRadius;
+        return (fleeDirection + circularOffset).normalized;
     }
 
     private void ReturnToNearestPatrolPoint()
