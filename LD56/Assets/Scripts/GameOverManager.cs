@@ -26,6 +26,8 @@ public class GameOverManager : MonoBehaviour
 
     public void RestartGame()
     {
+        // Reset HUD values
+        HUDUIManager.Instance.ResetHUD();
         // Reload the MainScene and reset all variables
         SceneManager.LoadScene("MainScene");
         
