@@ -12,7 +12,7 @@ https://github.com/EuanYeet
 itch.io:
 https://milesjmaiden.itch.io/trap-em
 
-Embedded YouTube Links:
+YouTube Link:
 https://youtu.be/uD9JKt4rN7o
 
 Description
