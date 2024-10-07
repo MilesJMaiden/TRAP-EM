@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     public int npcACount;
     public int npcBCount;
     public int npcCCount;
-    public int ReleasedNPCA;
+    public int ReleasedNPCA = 0;
     public int ReleasedNPCB;
     public int ReleasedNPCC;
 

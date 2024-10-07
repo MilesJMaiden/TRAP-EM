@@ -62,9 +62,12 @@ public class HUDUIManager : MonoBehaviour
     void Start()
     {
         inventory = FindObjectOfType<Inventory>();
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory component not found in the scene.");
+        }
         score = initialScore;
         StartMonitoringTime();
-
     }
 
     void Update()
@@ -151,10 +154,9 @@ public class HUDUIManager : MonoBehaviour
     public void ResetHUD()
     {
         score = initialScore;
-        elapsedTime = 0f; 
+        elapsedTime = 0f;
         isMonitoringTime = false;
         isGameOver = false;
-        inventory.ReleasedNPCA = 0;
         UpdateHUD();
     }
 
@@ -171,6 +173,7 @@ public class HUDUIManager : MonoBehaviour
         // Store the score in a static variable or a GameManager
         GameOverManager.FinalScore = Mathf.Round(score);
         isGameOver = true;
+        inventory.ReleasedNPCA = 0;
         // Load the GameOverMenuScene
         SceneManager.LoadScene("GameOverScene");
     }
